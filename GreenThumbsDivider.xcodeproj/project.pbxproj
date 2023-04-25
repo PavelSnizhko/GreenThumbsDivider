@@ -7,15 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E84D059F29F0408100DAA721 /* PureSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E84D059E29F0408100DAA721 /* PureSwiftUI */; };
+		E84D05A129F2804600DAA721 /* CloudShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84D05A029F2804600DAA721 /* CloudShape.swift */; };
+		E84D05A429F6671000DAA721 /* PentagonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84D05A329F6670F00DAA721 /* PentagonView.swift */; };
+		E84D05A629F681E900DAA721 /* TeamsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84D05A529F681E900DAA721 /* TeamsView.swift */; };
+		E84D05A829F6C7B400DAA721 /* FileManager+DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84D05A729F6C7B400DAA721 /* FileManager+DocumentsDirectory.swift */; };
+		E84D05AB29F7ED4300DAA721 /* FileManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84D05AA29F7ED4300DAA721 /* FileManagerService.swift */; };
 		E8C21F2229E4257B00369E39 /* GreenThumbsDividerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F2129E4257B00369E39 /* GreenThumbsDividerApp.swift */; };
 		E8C21F2429E4257B00369E39 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F2329E4257B00369E39 /* ContentView.swift */; };
 		E8C21F2629E4257E00369E39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8C21F2529E4257E00369E39 /* Assets.xcassets */; };
 		E8C21F2929E4257E00369E39 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8C21F2829E4257E00369E39 /* Preview Assets.xcassets */; };
 		E8C21F2B29E4257E00369E39 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F2A29E4257E00369E39 /* Persistence.swift */; };
 		E8C21F2E29E4257E00369E39 /* GreenThumbsDivider.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F2C29E4257E00369E39 /* GreenThumbsDivider.xcdatamodeld */; };
+		E8C21F3529E4386800369E39 /* GridStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F3429E4386800369E39 /* GridStack.swift */; };
+		E8C21F3729E446AC00369E39 /* SplitTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F3629E446AC00369E39 /* SplitTeamView.swift */; };
+		E8C21F3929E54B4100369E39 /* MemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F3829E54B4100369E39 /* MemberModel.swift */; };
+		E8C21F3B29E54B8000369E39 /* CarouselViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F3A29E54B8000369E39 /* CarouselViewModel.swift */; };
+		E8C21F3D29E54B9F00369E39 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F3C29E54B9F00369E39 /* CarouselView.swift */; };
+		E8E12CF129E6CD85001E10E8 /* SplittedTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E12CF029E6CD85001E10E8 /* SplittedTeamView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E84D05A029F2804600DAA721 /* CloudShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudShape.swift; sourceTree = "<group>"; };
+		E84D05A329F6670F00DAA721 /* PentagonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PentagonView.swift; sourceTree = "<group>"; };
+		E84D05A529F681E900DAA721 /* TeamsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsView.swift; sourceTree = "<group>"; };
+		E84D05A729F6C7B400DAA721 /* FileManager+DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+DocumentsDirectory.swift"; sourceTree = "<group>"; };
+		E84D05AA29F7ED4300DAA721 /* FileManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerService.swift; sourceTree = "<group>"; };
 		E8C21F1E29E4257B00369E39 /* GreenThumbsDivider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GreenThumbsDivider.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8C21F2129E4257B00369E39 /* GreenThumbsDividerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenThumbsDividerApp.swift; sourceTree = "<group>"; };
 		E8C21F2329E4257B00369E39 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -23,6 +40,12 @@
 		E8C21F2829E4257E00369E39 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E8C21F2A29E4257E00369E39 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		E8C21F2D29E4257E00369E39 /* GreenThumbsDivider.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GreenThumbsDivider.xcdatamodel; sourceTree = "<group>"; };
+		E8C21F3429E4386800369E39 /* GridStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridStack.swift; sourceTree = "<group>"; };
+		E8C21F3629E446AC00369E39 /* SplitTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitTeamView.swift; sourceTree = "<group>"; };
+		E8C21F3829E54B4100369E39 /* MemberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberModel.swift; sourceTree = "<group>"; };
+		E8C21F3A29E54B8000369E39 /* CarouselViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselViewModel.swift; sourceTree = "<group>"; };
+		E8C21F3C29E54B9F00369E39 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
+		E8E12CF029E6CD85001E10E8 /* SplittedTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplittedTeamView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,12 +53,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E84D059F29F0408100DAA721 /* PureSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E84D05A229F666DE00DAA721 /* CardCells */ = {
+			isa = PBXGroup;
+			children = (
+				E84D05A029F2804600DAA721 /* CloudShape.swift */,
+				E84D05A329F6670F00DAA721 /* PentagonView.swift */,
+			);
+			path = CardCells;
+			sourceTree = "<group>";
+		};
+		E84D05A929F7ED2600DAA721 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				E84D05A729F6C7B400DAA721 /* FileManager+DocumentsDirectory.swift */,
+				E84D05AA29F7ED4300DAA721 /* FileManagerService.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		E8C21F1529E4257B00369E39 = {
 			isa = PBXGroup;
 			children = (
@@ -55,12 +97,19 @@
 		E8C21F2029E4257B00369E39 /* GreenThumbsDivider */ = {
 			isa = PBXGroup;
 			children = (
+				E84D05A929F7ED2600DAA721 /* Managers */,
+				E84D05A229F666DE00DAA721 /* CardCells */,
 				E8C21F2129E4257B00369E39 /* GreenThumbsDividerApp.swift */,
 				E8C21F2329E4257B00369E39 /* ContentView.swift */,
 				E8C21F2529E4257E00369E39 /* Assets.xcassets */,
 				E8C21F2A29E4257E00369E39 /* Persistence.swift */,
 				E8C21F2C29E4257E00369E39 /* GreenThumbsDivider.xcdatamodeld */,
 				E8C21F2729E4257E00369E39 /* Preview Content */,
+				E8C21F3429E4386800369E39 /* GridStack.swift */,
+				E8C21F3629E446AC00369E39 /* SplitTeamView.swift */,
+				E8C21F3E29E54BD800369E39 /* Carousel */,
+				E8E12CF029E6CD85001E10E8 /* SplittedTeamView.swift */,
+				E84D05A529F681E900DAA721 /* TeamsView.swift */,
 			);
 			path = GreenThumbsDivider;
 			sourceTree = "<group>";
@@ -71,6 +120,16 @@
 				E8C21F2829E4257E00369E39 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E8C21F3E29E54BD800369E39 /* Carousel */ = {
+			isa = PBXGroup;
+			children = (
+				E8C21F3C29E54B9F00369E39 /* CarouselView.swift */,
+				E8C21F3829E54B4100369E39 /* MemberModel.swift */,
+				E8C21F3A29E54B8000369E39 /* CarouselViewModel.swift */,
+			);
+			path = Carousel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -89,6 +148,9 @@
 			dependencies = (
 			);
 			name = GreenThumbsDivider;
+			packageProductDependencies = (
+				E84D059E29F0408100DAA721 /* PureSwiftUI */,
+			);
 			productName = GreenThumbsDivider;
 			productReference = E8C21F1E29E4257B00369E39 /* GreenThumbsDivider.app */;
 			productType = "com.apple.product-type.application";
@@ -117,6 +179,9 @@
 				Base,
 			);
 			mainGroup = E8C21F1529E4257B00369E39;
+			packageReferences = (
+				E84D059D29F0408100DAA721 /* XCRemoteSwiftPackageReference "pure-swift-ui" */,
+			);
 			productRefGroup = E8C21F1F29E4257B00369E39 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -143,10 +208,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8C21F3729E446AC00369E39 /* SplitTeamView.swift in Sources */,
+				E8C21F3529E4386800369E39 /* GridStack.swift in Sources */,
+				E84D05A829F6C7B400DAA721 /* FileManager+DocumentsDirectory.swift in Sources */,
 				E8C21F2B29E4257E00369E39 /* Persistence.swift in Sources */,
+				E84D05A129F2804600DAA721 /* CloudShape.swift in Sources */,
+				E84D05AB29F7ED4300DAA721 /* FileManagerService.swift in Sources */,
 				E8C21F2429E4257B00369E39 /* ContentView.swift in Sources */,
+				E8C21F3D29E54B9F00369E39 /* CarouselView.swift in Sources */,
+				E8C21F3B29E54B8000369E39 /* CarouselViewModel.swift in Sources */,
 				E8C21F2E29E4257E00369E39 /* GreenThumbsDivider.xcdatamodeld in Sources */,
+				E84D05A429F6671000DAA721 /* PentagonView.swift in Sources */,
+				E84D05A629F681E900DAA721 /* TeamsView.swift in Sources */,
+				E8E12CF129E6CD85001E10E8 /* SplittedTeamView.swift in Sources */,
 				E8C21F2229E4257B00369E39 /* GreenThumbsDividerApp.swift in Sources */,
+				E8C21F3929E54B4100369E39 /* MemberModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +421,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E84D059D29F0408100DAA721 /* XCRemoteSwiftPackageReference "pure-swift-ui" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CodeSlicing/pure-swift-ui";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E84D059E29F0408100DAA721 /* PureSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E84D059D29F0408100DAA721 /* XCRemoteSwiftPackageReference "pure-swift-ui" */;
+			productName = PureSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		E8C21F2C29E4257E00369E39 /* GreenThumbsDivider.xcdatamodeld */ = {
