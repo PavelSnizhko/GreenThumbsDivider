@@ -20,7 +20,11 @@ class CarouselViewModel: ObservableObject {
         selectedMember = image
     }
     
-    func addMember(_ member: MemberModel) {
+    func addMember(_ member: MemberModel?) {
+        guard let member else {
+            return
+        }
+        
         members.append(member)
         FileManagerService.shared.add(member: member)
         selectMember(member)
