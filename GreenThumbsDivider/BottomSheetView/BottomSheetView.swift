@@ -24,6 +24,7 @@ struct BottomSheetView: View {
                     .resizable()
                     .frame(minWidth: 0, maxWidth: 200)
                     .frame(minHeight: 0, maxHeight: 200)
+                    .aspectRatio(contentMode: .fill)
             }
             
             TextField("Name", text: $viewModel.name)
@@ -52,7 +53,6 @@ struct BottomSheetView: View {
                 })
             }
             .onDisappear {
-                print("Dissapeared")
                 result(viewModel.member)
 
             }.sheet(isPresented: $viewModel.showPicker){

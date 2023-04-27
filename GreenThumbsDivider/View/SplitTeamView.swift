@@ -9,39 +9,40 @@ import SwiftUI
 import PhotosUI
 
 struct SplitTeamView: View {
-    
-    @State private var teams: Int = 2
-    @State private var goalkeeper: Int = 1
+    @StateObject private var splitTeamViewModel = SplitTeamViewModel()
     @StateObject private var carouselViewModel = CarouselViewModel()
-    
     @State var showingBottomSheet = false
-    
-    @State private var isTeamSplited: Bool = false
-    
+        
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
-                VStack {
-                    Stepper("Команди: \(teams)", value: $teams)
-                    Stepper("Воротар: \(goalkeeper)", value: $goalkeeper)
+                VStack(alignment: .leading) {
+                    Text("Команди: \(splitTeamViewModel.teams)")
+                    Stepper("Воротар: \(splitTeamViewModel.goalkeeper)",
+                            value: $splitTeamViewModel.goalkeeper,
+                            in: 1...2,
+                            step: 1)
                 }
                 .font(.title3)
-                Button(action: {
-                    isTeamSplited = true
-                    print("Поділитись кнопка")
-                }, label: {
+                Button(action: { }, label: {
                     NavigationLink {
-                        TeamsView(vm: TeamsViewModel(members: carouselViewModel.members, teamCount: 2))
+                        TeamsView(vm: TeamsViewModel(members: carouselViewModel.members,
+                                                     teamCount: splitTeamViewModel.teams,
+                                                     goalkeeperCount: splitTeamViewModel.goalkeeper))
                     } label: {
                         Text("Поділитись")
                             .frame(width: 280, height: 50)
                             .background(Color(red: 124 / 255, green: 222 / 255, blue: 220 / 255))
                             .cornerRadius(10)
                     }
-                }).padding(.top, 50)
+                })
+                .disabled(!splitTeamViewModel.isAvailableSplitting)
+                .padding(.top, 50)
                 Spacer()
                 membersSelectionView
-            }
+            }.onChange(of: carouselViewModel.members, perform: { members in
+                splitTeamViewModel.isAvailableSplitting(for: members)
+            })
             .frame(
                 maxWidth: .infinity,
                 maxHeight: .infinity,
