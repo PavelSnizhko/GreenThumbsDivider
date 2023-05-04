@@ -15,15 +15,20 @@ struct TeamsView: View {
     }
     
     var body: some View {
-        VStack {
-//            Spacer()
+        VStack(spacing: 10) {
             teamViews()
-//            Spacer()
-            Text("Воротар")
-                .font(.system(size: 40, weight: .heavy))
-                .foregroundColor(.red)
-            goalkeeperViews()
-        }.toolbar {
+            Spacer()
+            VStack {
+                LineDivider(text: "Goalkeeper", lineColor: .black)
+                goalkeeperViews()
+            }
+            .frame(maxWidth: .infinity)
+            
+        }
+        .background(
+            LinearGradient(gradient: Gradient(colors: [.purple, .cyan, .yellow]), startPoint: .top, endPoint: .bottom)
+        )
+        .toolbar {
             ToolbarItem(placement: .principal) {
                 Text("Заруба")
                     .font(.system(size: 20, weight: .bold, design: .default))
@@ -38,7 +43,7 @@ struct TeamsView: View {
                     Image(uiImage: goalkeeper.image ?? UIImage())
                         .resizable()
                         .clipShape(shape)
-                        .frame(100, 100)
+                        .frame(width: 150, height: 150)
                         .aspectRatio(contentMode: .fill)
                     Text(goalkeeper.name)
                 }
@@ -48,7 +53,7 @@ struct TeamsView: View {
     
     func teamViews() -> some View {
         ForEach(vm.teamsAndShapes, id: \.0.key) { (team, shape) in
-            VStack {
+            VStack(spacing: 40) {
                 GeometryReader { geometry in
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(alignment: .center) {
@@ -57,7 +62,7 @@ struct TeamsView: View {
                                     Image(uiImage: member.image ?? UIImage())
                                         .resizable()
                                         .clipShape(shape)
-                                        .frame(200, 200)
+                                        .frame(width: 150, height: 150)
                                         .aspectRatio(contentMode: .fill)
                                     Text("\(member.name)(\(member.nickName))")
                                 }
@@ -66,18 +71,37 @@ struct TeamsView: View {
                         .frame(minWidth: geometry.size.width)
                     }
                 }
+                .frame(height: 150)
                 if team.key != vm.teams.teamMembers.keys.count - 1 {
-                    HStack {
-                        Color.gray.frame(height: 2)
-                            .padding(.leading, 20)
-                        Text("VS")
-                            .font(.system(size: 20, weight: .heavy))
-                        Color.gray.frame(height: 2)
-                            .padding(.trailing, 20)
-                    }
-                    .padding([.top, .bottom], 20)
+                    LineDivider(text: "VS", lineColor: .black)
+                        .foregroundColor(.green)
                 }
             }
         }
+    }
+}
+
+struct LineDivider: View {
+    let text: String
+    let lineColor: Color
+    
+    var body: some View {
+        HStack {
+            lineColor.frame(height: 2)
+                .padding(.leading, 20)
+            Text(text)
+                .font(.system(size: 20, weight: .heavy))
+            lineColor.frame(height: 2)
+                .padding(.trailing, 20)
+        }
+    }
+}
+
+
+struct TeamsView_Previews: PreviewProvider {
+    static var previews: some View {
+        TeamsView(vm: TeamsViewModel(members: [MemberModel(id: UUID(), name: "Paulo", nickName: "Snizhko", image: UIImage(named: "test_1")),
+                                               MemberModel(id: UUID(), name: "Paulo", nickName: "Snizhko", image: UIImage(named: "test_2")),
+                                               MemberModel(id: UUID(), name: "Paulo", nickName: "Snizhko", image: UIImage(named: "test_3"))], teamCount: 2, goalkeeperCount: 1))
     }
 }

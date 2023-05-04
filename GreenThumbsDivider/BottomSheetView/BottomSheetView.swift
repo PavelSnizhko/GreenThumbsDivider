@@ -17,7 +17,6 @@ struct BottomSheetView: View {
         VStack(spacing: 20) {
             Text("Add a new player")
                 .font(.headline)
-                .padding(.top, 20)
             
             if let image = viewModel.image {
                 Image(uiImage: image)
@@ -51,6 +50,7 @@ struct BottomSheetView: View {
                     Image(systemName: "camera")
                         .foregroundColor(.blue)
                 })
+                doneButton
             }
             .onDisappear {
                 result(viewModel.member)
@@ -61,7 +61,9 @@ struct BottomSheetView: View {
                         .ignoresSafeArea()
             }
             .padding(.top, 20)
+            Spacer()
         }
+        .padding(.top, 10)
         .frame(minWidth: 0, maxWidth: .infinity)
         .padding(.vertical, 30)
         .background(Color.white)
@@ -71,3 +73,31 @@ struct BottomSheetView: View {
         .edgesIgnoringSafeArea(.bottom)
     }
 }
+
+extension BottomSheetView {
+    
+    var doneButton: some View {
+        Button {
+            
+        } label: {
+            HStack {
+                Text("Готово")
+            }
+            .font(.headline)
+            .padding()
+            .frame(height: 35)
+            .background(Color.blue)
+            .foregroundColor(Color.white)
+            .cornerRadius(15)
+        }
+        .disabled(viewModel.isDoneButtonAvailable)
+    }
+    
+}
+
+
+//struct BottomSheetView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BottomSheetView(viewModel: BottomSheetViewModel(), result: { _ in})
+//    }
+//}

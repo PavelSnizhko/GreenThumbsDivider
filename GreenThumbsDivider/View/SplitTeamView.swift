@@ -7,12 +7,17 @@
 
 import SwiftUI
 import PhotosUI
+import CollectionViewPagingLayout
 
 struct SplitTeamView: View {
     @StateObject private var splitTeamViewModel = SplitTeamViewModel()
     @StateObject private var carouselViewModel = CarouselViewModel()
     @State var showingBottomSheet = false
-        
+    
+    var options: ScaleTransformViewOptions {
+        .layout(.linear)
+    }
+    
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
@@ -24,7 +29,9 @@ struct SplitTeamView: View {
                             step: 1)
                 }
                 .font(.title3)
-                Button(action: { }, label: {
+                Button(action: {
+                    
+                }, label: {
                     NavigationLink {
                         TeamsView(vm: TeamsViewModel(members: carouselViewModel.members,
                                                      teamCount: splitTeamViewModel.teams,
@@ -58,7 +65,19 @@ extension SplitTeamView {
     
     var membersSelectionView: some View {
         VStack {
-            CarouselView(viewModel: carouselViewModel)
+            ScalePageView(carouselViewModel.members,
+                          selection: $carouselViewModel.memeberId) { item in
+                Image(uiImage: item.image!)
+                    .resizable()
+                    .frame(width: 200, height: 200)
+                    .aspectRatio(contentMode: .fill)
+                    .clipShape(Circle())
+            }
+                          .options(options)
+                          .pagePadding(vertical: .absolute(100),
+                                       horizontal: .absolute(80))
+            
+            //            CarouselView(viewModel: carouselViewModel)
             
             HStack {
                 Button(action: {
@@ -80,14 +99,16 @@ extension SplitTeamView {
                     
                 })
                 .sheet(isPresented: $showingBottomSheet, content: {
-                    BottomSheetView(viewModel: .init()) { member in
+                    BottomSheetView(viewModel: .init(sheetSize: $splitTeamViewModel.sheetSize)) { member in
                         carouselViewModel.addMember(member)
                     }
-                        .presentationDetents([.medium])
-                        .presentationDragIndicator(.visible)
+                    .presentationDetents([.height(300), .height(500)], selection: $splitTeamViewModel.sheetSize)
+                    .presentationDragIndicator(.visible)
                 })
                 .clipShape(Circle())
             }
+        }.onAppear {
+            carouselViewModel.fetchImages()
         }
     }
 }

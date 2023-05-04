@@ -30,6 +30,8 @@
 		E8C21F3929E54B4100369E39 /* MemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F3829E54B4100369E39 /* MemberModel.swift */; };
 		E8C21F3B29E54B8000369E39 /* CarouselViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F3A29E54B8000369E39 /* CarouselViewModel.swift */; };
 		E8C21F3D29E54B9F00369E39 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F3C29E54B9F00369E39 /* CarouselView.swift */; };
+		E8DC48422A027EB500F7D9B5 /* CollectionViewPagingLayout in Frameworks */ = {isa = PBXBuildFile; productRef = E8DC48412A027EB500F7D9B5 /* CollectionViewPagingLayout */; };
+		E8DC48452A02A20900F7D9B5 /* View+Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DC48442A02A20900F7D9B5 /* View+Modifiers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +58,7 @@
 		E8C21F3829E54B4100369E39 /* MemberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberModel.swift; sourceTree = "<group>"; };
 		E8C21F3A29E54B8000369E39 /* CarouselViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselViewModel.swift; sourceTree = "<group>"; };
 		E8C21F3C29E54B9F00369E39 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
+		E8DC48442A02A20900F7D9B5 /* View+Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Modifiers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +67,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E84D059F29F0408100DAA721 /* PureSwiftUI in Frameworks */,
+				E8DC48422A027EB500F7D9B5 /* CollectionViewPagingLayout in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +147,7 @@
 		E8C21F2029E4257B00369E39 /* GreenThumbsDivider */ = {
 			isa = PBXGroup;
 			children = (
+				E8DC48432A02A1F800F7D9B5 /* Common */,
 				E84D05DE29FA929500DAA721 /* View */,
 				E84D05DB29FA921000DAA721 /* ViewModel */,
 				E84D05D829F965E500DAA721 /* Model */,
@@ -179,6 +184,14 @@
 			path = Carousel;
 			sourceTree = "<group>";
 		};
+		E8DC48432A02A1F800F7D9B5 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				E8DC48442A02A20900F7D9B5 /* View+Modifiers.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -197,6 +210,7 @@
 			name = GreenThumbsDivider;
 			packageProductDependencies = (
 				E84D059E29F0408100DAA721 /* PureSwiftUI */,
+				E8DC48412A027EB500F7D9B5 /* CollectionViewPagingLayout */,
 			);
 			productName = GreenThumbsDivider;
 			productReference = E8C21F1E29E4257B00369E39 /* GreenThumbsDivider.app */;
@@ -228,6 +242,7 @@
 			mainGroup = E8C21F1529E4257B00369E39;
 			packageReferences = (
 				E84D059D29F0408100DAA721 /* XCRemoteSwiftPackageReference "pure-swift-ui" */,
+				E8DC48402A027EB500F7D9B5 /* XCRemoteSwiftPackageReference "CollectionViewPagingLayout" */,
 			);
 			productRefGroup = E8C21F1F29E4257B00369E39 /* Products */;
 			projectDirPath = "";
@@ -272,6 +287,7 @@
 				E84D05A429F6671000DAA721 /* PentagonView.swift in Sources */,
 				E84D05AE29F90B8D00DAA721 /* BottomSheetView.swift in Sources */,
 				E84D05A629F681E900DAA721 /* TeamsView.swift in Sources */,
+				E8DC48452A02A20900F7D9B5 /* View+Modifiers.swift in Sources */,
 				E8C21F2229E4257B00369E39 /* GreenThumbsDividerApp.swift in Sources */,
 				E8C21F3929E54B4100369E39 /* MemberModel.swift in Sources */,
 				E84D05B029F90BAA00DAA721 /* BottomSheetViewModel.swift in Sources */,
@@ -489,6 +505,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		E8DC48402A027EB500F7D9B5 /* XCRemoteSwiftPackageReference "CollectionViewPagingLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/amirdew/CollectionViewPagingLayout.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -496,6 +520,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E84D059D29F0408100DAA721 /* XCRemoteSwiftPackageReference "pure-swift-ui" */;
 			productName = PureSwiftUI;
+		};
+		E8DC48412A027EB500F7D9B5 /* CollectionViewPagingLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E8DC48402A027EB500F7D9B5 /* XCRemoteSwiftPackageReference "CollectionViewPagingLayout" */;
+			productName = CollectionViewPagingLayout;
 		};
 /* End XCSwiftPackageProductDependency section */
 

@@ -9,15 +9,11 @@ import Foundation
 
 class CarouselViewModel: ObservableObject {
     @Published var members: [MemberModel] = []
-    @Published private(set) var selectedMember: MemberModel?
+    @Published var memeberId: UUID?
     
     func fetchImages() {
         members = FileManagerService.shared.loadMembers()
-        selectedMember = members.first
-    }
-    
-    func selectMember(_ image: MemberModel?) {
-        selectedMember = image
+        memeberId = members[0].id
     }
     
     func addMember(_ member: MemberModel?) {
@@ -26,19 +22,22 @@ class CarouselViewModel: ObservableObject {
         }
         
         members.append(member)
+        memeberId = member.id
         FileManagerService.shared.add(member: member)
-        selectMember(member)
     }
     
     func removePlayer() {
-        guard let selectedMember else {
+        guard let memeberId else {
             return
         }
         
-        if let index = members.firstIndex(where: { $0.id == selectedMember.id }) {
-            selectMember(nil)
+        if let index = members.firstIndex(where: { $0.id == memeberId }) {
             members.remove(at: index)
             FileManagerService.shared.save(members: members)
+            
+            if index != 0 {
+                self.memeberId = members[index - 1].id
+            }
         }
     }
 }

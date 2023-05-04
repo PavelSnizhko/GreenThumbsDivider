@@ -12,11 +12,25 @@ import PhotosUI
     @Published var name: String = ""
     @Published var surname: String = ""
     @Published var selectedImage: UIImage?
-
+    
     @Published var showPicker: Bool = false
     @Published var source: Picker.Source = .library
     
-    @Published var image: UIImage?
+    @Published var image: UIImage? {
+        didSet {
+            sheetSize = .height(500)
+        }
+    }
+    
+    @Binding var sheetSize: PresentationDetent
+    
+    init(sheetSize: Binding<PresentationDetent>) {
+        self._sheetSize = sheetSize
+    }
+    
+    var isDoneButtonAvailable: Bool {
+        !name.isEmpty && !surname.isEmpty && image != nil
+    }
         
     var member: MemberModel? {
         guard let image else {
@@ -33,4 +47,5 @@ import PhotosUI
         }
         showPicker = true
     }
+    
 }
