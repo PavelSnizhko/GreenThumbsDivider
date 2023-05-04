@@ -9,10 +9,28 @@ import SwiftUI
 import PhotosUI
 import CollectionViewPagingLayout
 
+class DividerViewModel: ObservableObject {
+    var teamCount: Int = 2
+    var goalkeeperCount: Int = 2
+    
+    @Published var isAvailableSplitting: Bool = false
+    @Published var sheetSize: PresentationDetent = .height(300)
+    
+    func isAvailableSplitting(for members: [Player]) {
+        if members.count > 3 || (members.count == 3 && goalkeeperCount == 1) {
+            isAvailableSplitting = true
+        } else {
+            isAvailableSplitting = false
+        }
+    }
+}
+
 struct SplitTeamView: View {
     @StateObject private var splitTeamViewModel = SplitTeamViewModel()
     @StateObject private var carouselViewModel = CarouselViewModel()
     @State var showingBottomSheet = false
+    
+    @EnvironmentObject var dm: DividerViewModel
     
     var options: ScaleTransformViewOptions {
         .layout(.linear)
@@ -67,11 +85,7 @@ extension SplitTeamView {
         VStack {
             ScalePageView(carouselViewModel.members,
                           selection: $carouselViewModel.memeberId) { item in
-                Image(uiImage: item.image!)
-                    .resizable()
-                    .frame(width: 200, height: 200)
-                    .aspectRatio(contentMode: .fill)
-                    .clipShape(Circle())
+                FifaCardView()
             }
                           .options(options)
                           .pagePadding(vertical: .absolute(100),

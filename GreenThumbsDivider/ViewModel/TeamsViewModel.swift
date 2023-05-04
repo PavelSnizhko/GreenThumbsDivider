@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-typealias Teams = (goalkeepers: [Int: MemberModel], teamMembers: [Int: [MemberModel]])
+typealias Teams = (goalkeepers: [Int: Player], teamMembers: [Int: [Player]])
 
 final class TeamsViewModel {
-    var members: [MemberModel]
+    var members: [Player]
     let teamCount: Int
     let goalkeeperCount: Int
     
@@ -24,16 +24,16 @@ final class TeamsViewModel {
     
     var shapes = [AnyShape(CloudShape()), AnyShape(PentagonView())]
     
-    init(members: [MemberModel], teamCount: Int, goalkeeperCount: Int) {
+    init(members: [Player], teamCount: Int, goalkeeperCount: Int) {
         self.members = members
         self.teamCount = teamCount
         self.goalkeeperCount = goalkeeperCount
     }
     
-    private func getGoalkeepers() -> [Int: MemberModel] {
+    private func getGoalkeepers() -> [Int: Player] {
         self.members.shuffle()
         
-        var goalkeepers = [Int: MemberModel]()
+        var goalkeepers = [Int: Player]()
         
         guard goalkeeperCount > 0, goalkeeperCount <= teamCount, !members.isEmpty else {
             return [:]
@@ -53,7 +53,7 @@ final class TeamsViewModel {
     func assignMembersToTeams() -> Teams {
         let goalkeepers = self.getGoalkeepers()
         
-        var teams = [Int: [MemberModel]]()
+        var teams = [Int: [Player]]()
         let totalMembers = members.count
         let membersPerTeam = totalMembers / teamCount
         var extraMembers = totalMembers % teamCount
@@ -63,7 +63,7 @@ final class TeamsViewModel {
         
         // Assign members to each team
         for i in 0..<teamCount {
-            var membersForTeam = [MemberModel]()
+            var membersForTeam = [Player]()
             
             // Add the standard number of members per team
             for _ in 0..<membersPerTeam {

@@ -7,20 +7,22 @@
 
 import SwiftUI
 
-struct MemberModel: Identifiable, Equatable, Hashable {
+struct Player: Identifiable, Equatable, Hashable {
     let id: UUID
     let name: String
     let nickName: String
     var image: UIImage?
+    var isGoalkeeper: Bool
 }
 
-extension MemberModel: Codable {
+extension Player: Codable {
     
     enum CodingKeys: String, CodingKey {
         case id
         case name
         case nickName
         case imageData
+        case isGoalkeeper
     }
     
     init(from decoder: Decoder) throws {
@@ -28,6 +30,7 @@ extension MemberModel: Codable {
         id = try container.decode(UUID.self, forKey: .id)
         name = try container.decode(String.self, forKey: .name)
         nickName = try container.decode(String.self, forKey: .nickName)
+        isGoalkeeper = try container.decode(Bool.self, forKey: .isGoalkeeper)
         
         if let imageData = try container.decodeIfPresent(Data.self, forKey: .imageData) {
             image = UIImage(data: imageData)

@@ -27,11 +27,13 @@
 		E8C21F2E29E4257E00369E39 /* GreenThumbsDivider.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F2C29E4257E00369E39 /* GreenThumbsDivider.xcdatamodeld */; };
 		E8C21F3529E4386800369E39 /* GridStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F3429E4386800369E39 /* GridStack.swift */; };
 		E8C21F3729E446AC00369E39 /* SplitTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F3629E446AC00369E39 /* SplitTeamView.swift */; };
-		E8C21F3929E54B4100369E39 /* MemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F3829E54B4100369E39 /* MemberModel.swift */; };
+		E8C21F3929E54B4100369E39 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F3829E54B4100369E39 /* Player.swift */; };
 		E8C21F3B29E54B8000369E39 /* CarouselViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F3A29E54B8000369E39 /* CarouselViewModel.swift */; };
 		E8C21F3D29E54B9F00369E39 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F3C29E54B9F00369E39 /* CarouselView.swift */; };
 		E8DC48422A027EB500F7D9B5 /* CollectionViewPagingLayout in Frameworks */ = {isa = PBXBuildFile; productRef = E8DC48412A027EB500F7D9B5 /* CollectionViewPagingLayout */; };
 		E8DC48452A02A20900F7D9B5 /* View+Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DC48442A02A20900F7D9B5 /* View+Modifiers.swift */; };
+		E8DC48472A03B55100F7D9B5 /* FifaCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DC48462A03B55100F7D9B5 /* FifaCardView.swift */; };
+		E8DC48492A03B57700F7D9B5 /* FifaCardShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DC48482A03B57700F7D9B5 /* FifaCardShape.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,10 +57,12 @@
 		E8C21F2D29E4257E00369E39 /* GreenThumbsDivider.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GreenThumbsDivider.xcdatamodel; sourceTree = "<group>"; };
 		E8C21F3429E4386800369E39 /* GridStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridStack.swift; sourceTree = "<group>"; };
 		E8C21F3629E446AC00369E39 /* SplitTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitTeamView.swift; sourceTree = "<group>"; };
-		E8C21F3829E54B4100369E39 /* MemberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberModel.swift; sourceTree = "<group>"; };
+		E8C21F3829E54B4100369E39 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		E8C21F3A29E54B8000369E39 /* CarouselViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselViewModel.swift; sourceTree = "<group>"; };
 		E8C21F3C29E54B9F00369E39 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 		E8DC48442A02A20900F7D9B5 /* View+Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Modifiers.swift"; sourceTree = "<group>"; };
+		E8DC48462A03B55100F7D9B5 /* FifaCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifaCardView.swift; sourceTree = "<group>"; };
+		E8DC48482A03B57700F7D9B5 /* FifaCardShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifaCardShape.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,7 @@
 				E84D05A029F2804600DAA721 /* CloudShape.swift */,
 				E84D05A329F6670F00DAA721 /* PentagonView.swift */,
 				E84D05D429F964D500DAA721 /* ImagePicker.swift */,
+				E8DC48482A03B57700F7D9B5 /* FifaCardShape.swift */,
 			);
 			path = UIViewRepresentable;
 			sourceTree = "<group>";
@@ -124,6 +129,7 @@
 			children = (
 				E8C21F3629E446AC00369E39 /* SplitTeamView.swift */,
 				E84D05A529F681E900DAA721 /* TeamsView.swift */,
+				E8DC48462A03B55100F7D9B5 /* FifaCardView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -178,7 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				E8C21F3C29E54B9F00369E39 /* CarouselView.swift */,
-				E8C21F3829E54B4100369E39 /* MemberModel.swift */,
+				E8C21F3829E54B4100369E39 /* Player.swift */,
 				E8C21F3A29E54B8000369E39 /* CarouselViewModel.swift */,
 			);
 			path = Carousel;
@@ -270,8 +276,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8DC48492A03B57700F7D9B5 /* FifaCardShape.swift in Sources */,
 				E8C21F3729E446AC00369E39 /* SplitTeamView.swift in Sources */,
 				E8C21F3529E4386800369E39 /* GridStack.swift in Sources */,
+				E8DC48472A03B55100F7D9B5 /* FifaCardView.swift in Sources */,
 				E84D05A829F6C7B400DAA721 /* FileManager+DocumentsDirectory.swift in Sources */,
 				E84D05D529F964D500DAA721 /* ImagePicker.swift in Sources */,
 				E8C21F2B29E4257E00369E39 /* Persistence.swift in Sources */,
@@ -289,7 +297,7 @@
 				E84D05A629F681E900DAA721 /* TeamsView.swift in Sources */,
 				E8DC48452A02A20900F7D9B5 /* View+Modifiers.swift in Sources */,
 				E8C21F2229E4257B00369E39 /* GreenThumbsDividerApp.swift in Sources */,
-				E8C21F3929E54B4100369E39 /* MemberModel.swift in Sources */,
+				E8C21F3929E54B4100369E39 /* Player.swift in Sources */,
 				E84D05B029F90BAA00DAA721 /* BottomSheetViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

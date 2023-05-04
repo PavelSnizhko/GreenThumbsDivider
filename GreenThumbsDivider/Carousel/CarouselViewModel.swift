@@ -8,7 +8,7 @@
 import Foundation
 
 class CarouselViewModel: ObservableObject {
-    @Published var members: [MemberModel] = []
+    @Published var members: [Player] = []
     @Published var memeberId: UUID?
     
     func fetchImages() {
@@ -16,7 +16,7 @@ class CarouselViewModel: ObservableObject {
         memeberId = members[0].id
     }
     
-    func addMember(_ member: MemberModel?) {
+    func addMember(_ member: Player?) {
         guard let member else {
             return
         }

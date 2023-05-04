@@ -11,7 +11,7 @@ import PhotosUI
 struct BottomSheetView: View {
     @StateObject var viewModel: BottomSheetViewModel
     
-    var result: (MemberModel?) -> Void
+    var result: (Player?) -> Void
 
     var body: some View {
         VStack(spacing: 20) {

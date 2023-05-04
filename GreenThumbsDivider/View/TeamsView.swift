@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CollectionViewPagingLayout
 
 struct TeamsView: View {
     private var vm: TeamsViewModel
@@ -18,11 +19,11 @@ struct TeamsView: View {
         VStack(spacing: 10) {
             teamViews()
             Spacer()
-            VStack {
-                LineDivider(text: "Goalkeeper", lineColor: .black)
-                goalkeeperViews()
-            }
-            .frame(maxWidth: .infinity)
+            //            VStack {
+            //                LineDivider(text: "Goalkeeper", lineColor: .black)
+            //                goalkeeperViews()
+            //            }
+                .frame(maxWidth: .infinity)
             
         }
         .background(
@@ -36,6 +37,7 @@ struct TeamsView: View {
         }
     }
     
+    //TODO: add in the right up corner the line with mark GK.
     func goalkeeperViews() -> some View {
         HStack {
             ForEach(Array(zip(vm.teams.goalkeepers.values, vm.shapes.shuffled())), id: \.0.id) { (goalkeeper, shape) in
@@ -52,30 +54,24 @@ struct TeamsView: View {
     }
     
     func teamViews() -> some View {
-        ForEach(vm.teamsAndShapes, id: \.0.key) { (team, shape) in
+        var options: ScaleTransformViewOptions {
+            .layout(.linear)
+        }
+        
+        return ForEach(vm.teamsAndShapes, id: \.0.key) { (team, shape) in
             VStack(spacing: 40) {
-                GeometryReader { geometry in
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(alignment: .center) {
-                            ForEach(team.value, id: \.id) { member in
-                                VStack {
-                                    Image(uiImage: member.image ?? UIImage())
-                                        .resizable()
-                                        .clipShape(shape)
-                                        .frame(width: 150, height: 150)
-                                        .aspectRatio(contentMode: .fill)
-                                    Text("\(member.name)(\(member.nickName))")
-                                }
-                            }
-                        }
-                        .frame(minWidth: geometry.size.width)
-                    }
-                }
-                .frame(height: 150)
-                if team.key != vm.teams.teamMembers.keys.count - 1 {
-                    LineDivider(text: "VS", lineColor: .black)
-                        .foregroundColor(.green)
-                }
+                ScalePageView(team.value) { item in
+                    FifaCardView()
+                        .frame(height: 300)
+                }.options(options)
+                    .pagePadding(vertical: .absolute(20),
+                                 horizontal: .absolute(80))
+                    .frame(height: 300)
+            }
+            //            .frame(maxHeight: .infinity)
+            if team.key != vm.teams.teamMembers.keys.count - 1 {
+                LineDivider(text: "VS", lineColor: .black)
+                    .foregroundColor(.green)
             }
         }
     }
@@ -100,8 +96,8 @@ struct LineDivider: View {
 
 struct TeamsView_Previews: PreviewProvider {
     static var previews: some View {
-        TeamsView(vm: TeamsViewModel(members: [MemberModel(id: UUID(), name: "Paulo", nickName: "Snizhko", image: UIImage(named: "test_1")),
-                                               MemberModel(id: UUID(), name: "Paulo", nickName: "Snizhko", image: UIImage(named: "test_2")),
-                                               MemberModel(id: UUID(), name: "Paulo", nickName: "Snizhko", image: UIImage(named: "test_3"))], teamCount: 2, goalkeeperCount: 1))
+        TeamsView(vm: TeamsViewModel(members: [Player(id: UUID(), name: "Paulo", nickName: "Snizhko", image: UIImage(named: "test_1")),
+                                               Player(id: UUID(), name: "Paulo", nickName: "Snizhko", image: UIImage(named: "test_2")),
+                                               Player(id: UUID(), name: "Paulo", nickName: "Snizhko", image: UIImage(named: "test_3"))], teamCount: 2, goalkeeperCount: 1))
     }
 }

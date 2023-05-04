@@ -32,12 +32,12 @@ import PhotosUI
         !name.isEmpty && !surname.isEmpty && image != nil
     }
         
-    var member: MemberModel? {
+    var member: Player? {
         guard let image else {
             return nil
         }
         
-        return MemberModel(id: UUID(), name: name, nickName: surname, image: image)
+        return Player(id: UUID(), name: name, nickName: surname, image: image)
     }
        
     func showPhotoPicker() {
