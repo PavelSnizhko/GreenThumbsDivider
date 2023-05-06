@@ -45,7 +45,17 @@ struct FifaCardView: View {
                 headSection
                 bottomSection
             }
-            RingShape(currentPercentage: 100, thickness: 0.5).frame(width: 100, height: 100)
+            ZStack {
+                MyCustomShape()
+                    .frame(width: 74, height: 125)
+                    .foregroundColor(.red)
+                    .offset(x: 63, y: -85)
+                Text("GK")
+                    .foregroundColor(.white)
+                    .rotationEffect(.degrees(60), anchor: .center)
+                    .offset(x: 72, y: -90)
+            }
+           
         }
     }
     
