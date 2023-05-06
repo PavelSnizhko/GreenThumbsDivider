@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-typealias Teams = (goalkeepers: [Int: Player], teamMembers: [Int: [Player]])
+typealias Teams = [Int: [Player]]
 
 final class TeamsViewModel {
     var members: [Player]
@@ -18,40 +18,33 @@ final class TeamsViewModel {
         self.assignMembersToTeams()
     }()
     
-    lazy var sortedTeamMembers = teams.teamMembers.sorted(by: { $0.key < $1.key })
-    
-    lazy var teamsAndShapes = Array(zip(sortedTeamMembers, shapes.shuffled()))
-    
-    var shapes = [AnyShape(CloudShape()), AnyShape(PentagonView())]
-    
     init(members: [Player], teamCount: Int, goalkeeperCount: Int) {
         self.members = members
         self.teamCount = teamCount
         self.goalkeeperCount = goalkeeperCount
     }
     
-    private func getGoalkeepers() -> [Int: Player] {
+    private func selectGoalkeepers() -> [Player] {
+        var goalkeeprs: [Player] = []
+        guard goalkeeperCount > 0,
+              goalkeeperCount <= teamCount,
+              !members.isEmpty else {
+            return goalkeeprs
+        }
+        
         self.members.shuffle()
         
-        var goalkeepers = [Int: Player]()
-        
-        guard goalkeeperCount > 0, goalkeeperCount <= teamCount, !members.isEmpty else {
-            return [:]
-        }
-        
-        if goalkeeperCount == 1 {
-            return [0: members.removeFirst()]
-        }
-        
         for i in 0..<goalkeeperCount {
-            goalkeepers[i] = self.members.removeFirst()
+            var player = self.members.remove(at: i)
+            player.isGoalkeeper = true
+            goalkeeprs.append(player)
         }
         
-        return goalkeepers
+        return goalkeeprs
     }
     
-    func assignMembersToTeams() -> Teams {
-        let goalkeepers = self.getGoalkeepers()
+    func assignMembersToTeams() -> [Int: [Player]] {
+        var goalkeepers = selectGoalkeepers()
         
         var teams = [Int: [Player]]()
         let totalMembers = members.count
@@ -80,7 +73,17 @@ final class TeamsViewModel {
             teams[i] = membersForTeam
         }
         
-        return Teams(goalkeepers: goalkeepers, teamMembers: teams)
+        teams.sorted { $0.value.count < $1.value.count }.forEach { team in
+            guard goalkeepers.count > 0 else {
+                return
+            }
+            
+            var players = team.value
+            players.append(goalkeepers.removeFirst())
+            teams[team.key] = players
+        }
+        
+        return teams
     }
     
     private func removeRandomValues<T>(n: Int, from array: inout [T]) -> [T] {

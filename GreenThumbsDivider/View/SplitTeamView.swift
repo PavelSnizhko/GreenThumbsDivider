@@ -9,29 +9,11 @@ import SwiftUI
 import PhotosUI
 import CollectionViewPagingLayout
 
-class DividerViewModel: ObservableObject {
-    var teamCount: Int = 2
-    var goalkeeperCount: Int = 2
-    
-    @Published var isAvailableSplitting: Bool = false
-    @Published var sheetSize: PresentationDetent = .height(300)
-    
-    func isAvailableSplitting(for members: [Player]) {
-        if members.count > 3 || (members.count == 3 && goalkeeperCount == 1) {
-            isAvailableSplitting = true
-        } else {
-            isAvailableSplitting = false
-        }
-    }
-}
-
 struct SplitTeamView: View {
-    @StateObject private var splitTeamViewModel = SplitTeamViewModel()
-    @StateObject private var carouselViewModel = CarouselViewModel()
+    @StateObject private var playerViewModel = PlayerViewModel()
     @State var showingBottomSheet = false
-    
-    @EnvironmentObject var dm: DividerViewModel
-    
+    @State var sheetSize: PresentationDetent = .large
+        
     var options: ScaleTransformViewOptions {
         .layout(.linear)
     }
@@ -40,9 +22,9 @@ struct SplitTeamView: View {
         NavigationView {
             VStack(spacing: 20) {
                 VStack(alignment: .leading) {
-                    Text("Команди: \(splitTeamViewModel.teams)")
-                    Stepper("Воротар: \(splitTeamViewModel.goalkeeper)",
-                            value: $splitTeamViewModel.goalkeeper,
+                    Text("Команди: \(playerViewModel.teams)")
+                    Stepper("Воротар: \(playerViewModel.goalkeeper)",
+                            value: $playerViewModel.goalkeeper,
                             in: 1...2,
                             step: 1)
                 }
@@ -51,9 +33,9 @@ struct SplitTeamView: View {
                     
                 }, label: {
                     NavigationLink {
-                        TeamsView(vm: TeamsViewModel(members: carouselViewModel.members,
-                                                     teamCount: splitTeamViewModel.teams,
-                                                     goalkeeperCount: splitTeamViewModel.goalkeeper))
+                        TeamsView(vm: TeamsViewModel(members: playerViewModel.members,
+                                                     teamCount: playerViewModel.teams,
+                                                     goalkeeperCount: playerViewModel.goalkeeper))
                     } label: {
                         Text("Поділитись")
                             .frame(width: 280, height: 50)
@@ -61,12 +43,12 @@ struct SplitTeamView: View {
                             .cornerRadius(10)
                     }
                 })
-                .disabled(!splitTeamViewModel.isAvailableSplitting)
+                .disabled(!playerViewModel.isAvailableSplitting)
                 .padding(.top, 50)
                 Spacer()
                 membersSelectionView
-            }.onChange(of: carouselViewModel.members, perform: { members in
-                splitTeamViewModel.isAvailableSplitting(for: members)
+            }.onChange(of: playerViewModel.members, perform: { members in
+                playerViewModel.isAvailableSplitting(for: members)
             })
             .frame(
                 maxWidth: .infinity,
@@ -83,19 +65,17 @@ extension SplitTeamView {
     
     var membersSelectionView: some View {
         VStack {
-            ScalePageView(carouselViewModel.members,
-                          selection: $carouselViewModel.memeberId) { item in
-                FifaCardView()
+            ScalePageView(playerViewModel.members,
+                          selection: $playerViewModel.memeberId) { item in
+                FifaCardView(vm: FifaCardViewModel(model: item))
             }
                           .options(options)
                           .pagePadding(vertical: .absolute(100),
                                        horizontal: .absolute(80))
-            
-            //            CarouselView(viewModel: carouselViewModel)
-            
+                        
             HStack {
                 Button(action: {
-                    carouselViewModel.removePlayer()
+                    playerViewModel.removePlayer()
                 }, label: {
                     Image("minus")
                         .frame(width: 40, height: 40)
@@ -113,16 +93,17 @@ extension SplitTeamView {
                     
                 })
                 .sheet(isPresented: $showingBottomSheet, content: {
-                    BottomSheetView(viewModel: .init(sheetSize: $splitTeamViewModel.sheetSize)) { member in
-                        carouselViewModel.addMember(member)
+                    BottomSheetView(viewModel: .init(sheetSize: $sheetSize),
+                                    isPresented: $showingBottomSheet) { member in
+                        playerViewModel.addMember(member)
                     }
-                    .presentationDetents([.height(300), .height(500)], selection: $splitTeamViewModel.sheetSize)
+                                    .presentationDetents([.medium, .large], selection: $sheetSize)
                     .presentationDragIndicator(.visible)
                 })
                 .clipShape(Circle())
             }
         }.onAppear {
-            carouselViewModel.fetchImages()
+            playerViewModel.fetchImages()
         }
     }
 }

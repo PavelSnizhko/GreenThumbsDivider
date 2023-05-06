@@ -37,44 +37,31 @@ struct TeamsView: View {
         }
     }
     
-    //TODO: add in the right up corner the line with mark GK.
-    func goalkeeperViews() -> some View {
-        HStack {
-            ForEach(Array(zip(vm.teams.goalkeepers.values, vm.shapes.shuffled())), id: \.0.id) { (goalkeeper, shape) in
-                VStack {
-                    Image(uiImage: goalkeeper.image ?? UIImage())
-                        .resizable()
-                        .clipShape(shape)
-                        .frame(width: 150, height: 150)
-                        .aspectRatio(contentMode: .fill)
-                    Text(goalkeeper.name)
-                }
-            }
-        }
-    }
+//    //TODO: add in the right up corner the line with mark GK.
     
     func teamViews() -> some View {
         var options: ScaleTransformViewOptions {
             .layout(.linear)
         }
         
-        return ForEach(vm.teamsAndShapes, id: \.0.key) { (team, shape) in
-            VStack(spacing: 40) {
-                ScalePageView(team.value) { item in
-                    FifaCardView()
+        var teams = vm.assignMembersToTeams()
+        
+        return ForEach(teams.sorted(by: { $0.key < $1.key }), id: \.key) { key, players in
+                VStack(spacing: 40) {
+                    ScalePageView(players) { player in
+                        FifaCardView(vm: FifaCardViewModel(model: player))
+                            .frame(height: 300)
+                    }.options(options)
+                        .pagePadding(vertical: .absolute(20),
+                                     horizontal: .absolute(80))
                         .frame(height: 300)
-                }.options(options)
-                    .pagePadding(vertical: .absolute(20),
-                                 horizontal: .absolute(80))
-                    .frame(height: 300)
-            }
-            //            .frame(maxHeight: .infinity)
-            if team.key != vm.teams.teamMembers.keys.count - 1 {
-                LineDivider(text: "VS", lineColor: .black)
-                    .foregroundColor(.green)
+                }
+                if key != teams.keys.count - 1 {
+                    LineDivider(text: "VS", lineColor: .black)
+                        .foregroundColor(.green)
+                }
             }
         }
-    }
 }
 
 struct LineDivider: View {
@@ -94,10 +81,10 @@ struct LineDivider: View {
 }
 
 
-struct TeamsView_Previews: PreviewProvider {
-    static var previews: some View {
-        TeamsView(vm: TeamsViewModel(members: [Player(id: UUID(), name: "Paulo", nickName: "Snizhko", image: UIImage(named: "test_1")),
-                                               Player(id: UUID(), name: "Paulo", nickName: "Snizhko", image: UIImage(named: "test_2")),
-                                               Player(id: UUID(), name: "Paulo", nickName: "Snizhko", image: UIImage(named: "test_3"))], teamCount: 2, goalkeeperCount: 1))
-    }
-}
+//struct TeamsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TeamsView(vm: TeamsViewModel(members: [Player(id: UUID(), name: "Paulo", nickName: "Snizhko", image: UIImage(named: "test_1")),
+//                                               Player(id: UUID(), name: "Paulo", nickName: "Snizhko", image: UIImage(named: "test_2")),
+//                                               Player(id: UUID(), name: "Paulo", nickName: "Snizhko", image: UIImage(named: "test_3"))], teamCount: 2, goalkeeperCount: 1))
+//    }
+//}

@@ -12,13 +12,18 @@ import PhotosUI
     @Published var name: String = ""
     @Published var surname: String = ""
     @Published var selectedImage: UIImage?
+    @Published var club: UIImage?
+    
+    @Published var skills: [Skills] = []
     
     @Published var showPicker: Bool = false
-    @Published var source: Picker.Source = .library
+    @Published var source: SourcePicker.Source = .library
+    
+    @Published var contryImage: UIImage?
     
     @Published var image: UIImage? {
         didSet {
-            sheetSize = .height(500)
+            sheetSize = .large
         }
     }
     
@@ -33,15 +38,21 @@ import PhotosUI
     }
         
     var member: Player? {
-        guard let image else {
+        guard let image, let contryImage else {
             return nil
         }
         
-        return Player(id: UUID(), name: name, nickName: surname, image: image)
+        return Player(id: UUID(),
+                      name: name,
+                      nickName: surname,
+                      image: image,
+                      country: contryImage,
+                      skills: skills,
+                      playerPosition: .centerBack)
     }
        
     func showPhotoPicker() {
-        if source == .camera, !Picker.checkPermissions() {
+        if source == .camera, !SourcePicker.checkPermissions() {
             print("There is no Camera")
             return
         }

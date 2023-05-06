@@ -16,9 +16,8 @@
 		E84D05AE29F90B8D00DAA721 /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84D05AD29F90B8D00DAA721 /* BottomSheetView.swift */; };
 		E84D05B029F90BAA00DAA721 /* BottomSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84D05AF29F90BAA00DAA721 /* BottomSheetViewModel.swift */; };
 		E84D05D529F964D500DAA721 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84D05D429F964D500DAA721 /* ImagePicker.swift */; };
-		E84D05DA29F965F100DAA721 /* Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84D05D929F965F100DAA721 /* Picker.swift */; };
+		E84D05DA29F965F100DAA721 /* SourcePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84D05D929F965F100DAA721 /* SourcePicker.swift */; };
 		E84D05DD29FA922300DAA721 /* TeamsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84D05DC29FA922300DAA721 /* TeamsViewModel.swift */; };
-		E84D05E029FAABA200DAA721 /* SplitTeamViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84D05DF29FAABA200DAA721 /* SplitTeamViewModel.swift */; };
 		E8C21F2229E4257B00369E39 /* GreenThumbsDividerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F2129E4257B00369E39 /* GreenThumbsDividerApp.swift */; };
 		E8C21F2429E4257B00369E39 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F2329E4257B00369E39 /* ContentView.swift */; };
 		E8C21F2629E4257E00369E39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8C21F2529E4257E00369E39 /* Assets.xcassets */; };
@@ -28,12 +27,18 @@
 		E8C21F3529E4386800369E39 /* GridStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F3429E4386800369E39 /* GridStack.swift */; };
 		E8C21F3729E446AC00369E39 /* SplitTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F3629E446AC00369E39 /* SplitTeamView.swift */; };
 		E8C21F3929E54B4100369E39 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F3829E54B4100369E39 /* Player.swift */; };
-		E8C21F3B29E54B8000369E39 /* CarouselViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F3A29E54B8000369E39 /* CarouselViewModel.swift */; };
+		E8C21F3B29E54B8000369E39 /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F3A29E54B8000369E39 /* PlayerViewModel.swift */; };
 		E8C21F3D29E54B9F00369E39 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F3C29E54B9F00369E39 /* CarouselView.swift */; };
+		E8C5B3232A04E4ED008A42DA /* CountryPickerView .swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C5B3222A04E4ED008A42DA /* CountryPickerView .swift */; };
+		E8C5B33F2A050F89008A42DA /* SkillsSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C5B33E2A050F89008A42DA /* SkillsSliderView.swift */; };
+		E8C5B3412A051D0D008A42DA /* SkillsVieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C5B3402A051D0D008A42DA /* SkillsVieModel.swift */; };
 		E8DC48422A027EB500F7D9B5 /* CollectionViewPagingLayout in Frameworks */ = {isa = PBXBuildFile; productRef = E8DC48412A027EB500F7D9B5 /* CollectionViewPagingLayout */; };
 		E8DC48452A02A20900F7D9B5 /* View+Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DC48442A02A20900F7D9B5 /* View+Modifiers.swift */; };
 		E8DC48472A03B55100F7D9B5 /* FifaCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DC48462A03B55100F7D9B5 /* FifaCardView.swift */; };
 		E8DC48492A03B57700F7D9B5 /* FifaCardShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DC48482A03B57700F7D9B5 /* FifaCardShape.swift */; };
+		E8DC484B2A03EFFE00F7D9B5 /* SoccerPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DC484A2A03EFFE00F7D9B5 /* SoccerPosition.swift */; };
+		E8DC484D2A03F04300F7D9B5 /* Skills.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DC484C2A03F04300F7D9B5 /* Skills.swift */; };
+		E8DC484F2A03F26700F7D9B5 /* FifaCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DC484E2A03F26700F7D9B5 /* FifaCardViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,9 +50,8 @@
 		E84D05AD29F90B8D00DAA721 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
 		E84D05AF29F90BAA00DAA721 /* BottomSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewModel.swift; sourceTree = "<group>"; };
 		E84D05D429F964D500DAA721 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		E84D05D929F965F100DAA721 /* Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picker.swift; sourceTree = "<group>"; };
+		E84D05D929F965F100DAA721 /* SourcePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcePicker.swift; sourceTree = "<group>"; };
 		E84D05DC29FA922300DAA721 /* TeamsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsViewModel.swift; sourceTree = "<group>"; };
-		E84D05DF29FAABA200DAA721 /* SplitTeamViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitTeamViewModel.swift; sourceTree = "<group>"; };
 		E8C21F1E29E4257B00369E39 /* GreenThumbsDivider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GreenThumbsDivider.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8C21F2129E4257B00369E39 /* GreenThumbsDividerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenThumbsDividerApp.swift; sourceTree = "<group>"; };
 		E8C21F2329E4257B00369E39 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,11 +62,17 @@
 		E8C21F3429E4386800369E39 /* GridStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridStack.swift; sourceTree = "<group>"; };
 		E8C21F3629E446AC00369E39 /* SplitTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitTeamView.swift; sourceTree = "<group>"; };
 		E8C21F3829E54B4100369E39 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		E8C21F3A29E54B8000369E39 /* CarouselViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselViewModel.swift; sourceTree = "<group>"; };
+		E8C21F3A29E54B8000369E39 /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
 		E8C21F3C29E54B9F00369E39 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
+		E8C5B3222A04E4ED008A42DA /* CountryPickerView .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CountryPickerView .swift"; sourceTree = "<group>"; };
+		E8C5B33E2A050F89008A42DA /* SkillsSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsSliderView.swift; sourceTree = "<group>"; };
+		E8C5B3402A051D0D008A42DA /* SkillsVieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsVieModel.swift; sourceTree = "<group>"; };
 		E8DC48442A02A20900F7D9B5 /* View+Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Modifiers.swift"; sourceTree = "<group>"; };
 		E8DC48462A03B55100F7D9B5 /* FifaCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifaCardView.swift; sourceTree = "<group>"; };
 		E8DC48482A03B57700F7D9B5 /* FifaCardShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifaCardShape.swift; sourceTree = "<group>"; };
+		E8DC484A2A03EFFE00F7D9B5 /* SoccerPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoccerPosition.swift; sourceTree = "<group>"; };
+		E8DC484C2A03F04300F7D9B5 /* Skills.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skills.swift; sourceTree = "<group>"; };
+		E8DC484E2A03F26700F7D9B5 /* FifaCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifaCardViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +120,10 @@
 		E84D05D829F965E500DAA721 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E84D05D929F965F100DAA721 /* Picker.swift */,
+				E8C21F3829E54B4100369E39 /* Player.swift */,
+				E84D05D929F965F100DAA721 /* SourcePicker.swift */,
+				E8DC484A2A03EFFE00F7D9B5 /* SoccerPosition.swift */,
+				E8DC484C2A03F04300F7D9B5 /* Skills.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -118,8 +131,10 @@
 		E84D05DB29FA921000DAA721 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				E8C21F3A29E54B8000369E39 /* PlayerViewModel.swift */,
 				E84D05DC29FA922300DAA721 /* TeamsViewModel.swift */,
-				E84D05DF29FAABA200DAA721 /* SplitTeamViewModel.swift */,
+				E8DC484E2A03F26700F7D9B5 /* FifaCardViewModel.swift */,
+				E8C5B3402A051D0D008A42DA /* SkillsVieModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -130,6 +145,8 @@
 				E8C21F3629E446AC00369E39 /* SplitTeamView.swift */,
 				E84D05A529F681E900DAA721 /* TeamsView.swift */,
 				E8DC48462A03B55100F7D9B5 /* FifaCardView.swift */,
+				E8C5B3222A04E4ED008A42DA /* CountryPickerView .swift */,
+				E8C5B33E2A050F89008A42DA /* SkillsSliderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -184,8 +201,6 @@
 			isa = PBXGroup;
 			children = (
 				E8C21F3C29E54B9F00369E39 /* CarouselView.swift */,
-				E8C21F3829E54B4100369E39 /* Player.swift */,
-				E8C21F3A29E54B8000369E39 /* CarouselViewModel.swift */,
 			);
 			path = Carousel;
 			sourceTree = "<group>";
@@ -277,25 +292,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8DC48492A03B57700F7D9B5 /* FifaCardShape.swift in Sources */,
+				E8DC484D2A03F04300F7D9B5 /* Skills.swift in Sources */,
 				E8C21F3729E446AC00369E39 /* SplitTeamView.swift in Sources */,
 				E8C21F3529E4386800369E39 /* GridStack.swift in Sources */,
+				E8C5B3232A04E4ED008A42DA /* CountryPickerView .swift in Sources */,
 				E8DC48472A03B55100F7D9B5 /* FifaCardView.swift in Sources */,
 				E84D05A829F6C7B400DAA721 /* FileManager+DocumentsDirectory.swift in Sources */,
 				E84D05D529F964D500DAA721 /* ImagePicker.swift in Sources */,
 				E8C21F2B29E4257E00369E39 /* Persistence.swift in Sources */,
 				E84D05A129F2804600DAA721 /* CloudShape.swift in Sources */,
-				E84D05E029FAABA200DAA721 /* SplitTeamViewModel.swift in Sources */,
 				E84D05DD29FA922300DAA721 /* TeamsViewModel.swift in Sources */,
+				E8DC484B2A03EFFE00F7D9B5 /* SoccerPosition.swift in Sources */,
 				E84D05AB29F7ED4300DAA721 /* FileManagerService.swift in Sources */,
-				E84D05DA29F965F100DAA721 /* Picker.swift in Sources */,
+				E8DC484F2A03F26700F7D9B5 /* FifaCardViewModel.swift in Sources */,
+				E84D05DA29F965F100DAA721 /* SourcePicker.swift in Sources */,
 				E8C21F2429E4257B00369E39 /* ContentView.swift in Sources */,
 				E8C21F3D29E54B9F00369E39 /* CarouselView.swift in Sources */,
-				E8C21F3B29E54B8000369E39 /* CarouselViewModel.swift in Sources */,
+				E8C21F3B29E54B8000369E39 /* PlayerViewModel.swift in Sources */,
 				E8C21F2E29E4257E00369E39 /* GreenThumbsDivider.xcdatamodeld in Sources */,
 				E84D05A429F6671000DAA721 /* PentagonView.swift in Sources */,
 				E84D05AE29F90B8D00DAA721 /* BottomSheetView.swift in Sources */,
 				E84D05A629F681E900DAA721 /* TeamsView.swift in Sources */,
+				E8C5B3412A051D0D008A42DA /* SkillsVieModel.swift in Sources */,
 				E8DC48452A02A20900F7D9B5 /* View+Modifiers.swift in Sources */,
+				E8C5B33F2A050F89008A42DA /* SkillsSliderView.swift in Sources */,
 				E8C21F2229E4257B00369E39 /* GreenThumbsDividerApp.swift in Sources */,
 				E8C21F3929E54B4100369E39 /* Player.swift in Sources */,
 				E84D05B029F90BAA00DAA721 /* BottomSheetViewModel.swift in Sources */,

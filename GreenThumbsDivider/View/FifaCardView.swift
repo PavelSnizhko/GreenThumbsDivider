@@ -7,7 +7,36 @@
 
 import SwiftUI
 
-struct FifaCardView: View {    
+struct FifaCardViewModel {
+    let model: Player
+    
+    var nickname: String {
+        model.nickName.uppercased()
+    }
+
+    var skills: [String] {
+        model.skills.map { skill in
+            skill.concatenatedDesciption
+        }
+    }
+    
+    var countryImage: UIImage {
+        model.country
+    }
+    
+    var telent: Int {
+        model.skills.map(\.number).reduce(0, +) / model.skills.count
+    }
+    
+    var position: String {
+        model.playerPosition.abbreviation.uppercased()
+    }
+    
+}
+
+struct FifaCardView: View {
+    let vm: FifaCardViewModel
+    
     var body: some View {
         ZStack {
             FifaCardShape()
@@ -16,6 +45,7 @@ struct FifaCardView: View {
                 headSection
                 bottomSection
             }
+            RingShape(currentPercentage: 100, thickness: 0.5).frame(width: 100, height: 100)
         }
     }
     
@@ -25,21 +55,34 @@ extension FifaCardView {
     var headSection: some View {
         VStack(spacing: 10) {
             HStack {
-                VStack {
-                    Text("88")
-                    Text("ST")
+                VStack(spacing: 5) {
+                    Text("\(vm.telent)")
+                    Text(vm.position)
                         .underline()
                     VStack(spacing: 0) {
-                        Image(systemName: "flag.fill")
+                        Image(uiImage: vm.countryImage)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 50, height: 30)
                         Color.white.frame(width: 20, height: 1)
                     }
-                    Image(systemName: "soccerball")
+                    if let image = vm.model.club {
+                        Image(uiImage: image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 50, height: 30)
+//                        Image(systemName: "soccerball")
+                    }
                 }
                 .foregroundColor(.white)
-                Image(uiImage: UIImage(named: "test_1")!)
-                    .resizable()
-                    .frame(width: 100, height: 100)
-                    .offset(x: 15)
+                if let image = vm.model.image {
+                    Image(uiImage: image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 100, height: 100)
+                        .clipShape(Circle())
+                        .offset(x: 10)
+                }
             }
             Color.white.frame(width: 200, height: 1)
         }
@@ -49,19 +92,19 @@ extension FifaCardView {
 extension FifaCardView {
     var bottomSection: some View {
         VStack(spacing: 6) {
-            Text("Snizhko".uppercased())
+            Text(vm.nickname)
             Color.white.frame(width: 120, height: 1)
             HStack {
                 VStack(spacing: 5) {
-                    Text("84 Pac")
-                    Text("84 Sho")
-                    Text("84 Pas")
+                    ForEach(vm.skills.prefix(vm.skills.count / 2), id: \.self) { skill in
+                        Text(skill)
+                    }
                 }
                 Color.white.frame(width: 1, height: 60)
                 VStack(spacing: 5) {
-                    Text("84 Dri")
-                    Text("84 Def")
-                    Text("84 Phy")
+                    ForEach(vm.skills.suffix(vm.skills.count / 2), id: \.self) { skill in
+                        Text(skill)
+                    }
                 }
             }
         }
@@ -69,9 +112,30 @@ extension FifaCardView {
     }
 }
 
+struct RingShape: Shape {
+    
+    var currentPercentage: Double
+    var thickness: CGFloat
+    
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        
+        path.addArc(
+            center: CGPoint(x: rect.width / 2, y: rect.height / 2),
+            radius: rect.width / 2 - thickness,
+            startAngle: Angle(degrees: 0),
+            endAngle: Angle(degrees: 360 * currentPercentage),
+            clockwise: false
+        )
+        
+        return path
+            .strokedPath(.init(lineWidth: thickness, lineCap: .round, lineJoin: .round))
+    }
+}
+
 struct FifaCardView_Previews: PreviewProvider {
     static var previews: some View {
-        FifaCardView()
+        FifaCardView(vm: FifaCardViewModel(model: Player(id: UUID(), name: "Paulo", nickName: "Snizhko", image: UIImage(named: "test_2")!, country: UIImage(named: "Ukraine")!, playerPosition: .forward)))
     }
 }
 
