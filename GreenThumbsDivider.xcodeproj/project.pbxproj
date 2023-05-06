@@ -19,6 +19,7 @@
 		E84D05DA29F965F100DAA721 /* SourcePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84D05D929F965F100DAA721 /* SourcePicker.swift */; };
 		E84D05DD29FA922300DAA721 /* TeamsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84D05DC29FA922300DAA721 /* TeamsViewModel.swift */; };
 		E878EA672A060163000A14D2 /* TapeShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = E878EA662A060163000A14D2 /* TapeShape.swift */; };
+		E878EA692A06130D000A14D2 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = E878EA682A06130D000A14D2 /* Color+Hex.swift */; };
 		E8C21F2229E4257B00369E39 /* GreenThumbsDividerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F2129E4257B00369E39 /* GreenThumbsDividerApp.swift */; };
 		E8C21F2429E4257B00369E39 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F2329E4257B00369E39 /* ContentView.swift */; };
 		E8C21F2629E4257E00369E39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8C21F2529E4257E00369E39 /* Assets.xcassets */; };
@@ -54,6 +55,7 @@
 		E84D05D929F965F100DAA721 /* SourcePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcePicker.swift; sourceTree = "<group>"; };
 		E84D05DC29FA922300DAA721 /* TeamsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsViewModel.swift; sourceTree = "<group>"; };
 		E878EA662A060163000A14D2 /* TapeShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapeShape.swift; sourceTree = "<group>"; };
+		E878EA682A06130D000A14D2 /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
 		E8C21F1E29E4257B00369E39 /* GreenThumbsDivider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GreenThumbsDivider.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8C21F2129E4257B00369E39 /* GreenThumbsDividerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenThumbsDividerApp.swift; sourceTree = "<group>"; };
 		E8C21F2329E4257B00369E39 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				E8DC48442A02A20900F7D9B5 /* View+Modifiers.swift */,
+				E878EA682A06130D000A14D2 /* Color+Hex.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				E8C21F3729E446AC00369E39 /* SplitTeamView.swift in Sources */,
 				E8C21F3529E4386800369E39 /* GridStack.swift in Sources */,
 				E878EA672A060163000A14D2 /* TapeShape.swift in Sources */,
+				E878EA692A06130D000A14D2 /* Color+Hex.swift in Sources */,
 				E8C5B3232A04E4ED008A42DA /* CountryPickerView .swift in Sources */,
 				E8DC48472A03B55100F7D9B5 /* FifaCardView.swift in Sources */,
 				E84D05A829F6C7B400DAA721 /* FileManager+DocumentsDirectory.swift in Sources */,

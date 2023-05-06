@@ -13,49 +13,62 @@ struct SplitTeamView: View {
     @StateObject private var playerViewModel = PlayerViewModel()
     @State var showingBottomSheet = false
     @State var sheetSize: PresentationDetent = .large
-        
+    
     var options: ScaleTransformViewOptions {
         .layout(.linear)
     }
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 20) {
-                VStack(alignment: .leading) {
-                    Text("Команди: \(playerViewModel.teams)")
-                    Stepper("Воротар: \(playerViewModel.goalkeeper)",
-                            value: $playerViewModel.goalkeeper,
-                            in: 1...2,
-                            step: 1)
-                }
-                .font(.title3)
-                Button(action: {
-                    
-                }, label: {
-                    NavigationLink {
-                        TeamsView(vm: TeamsViewModel(members: playerViewModel.members,
-                                                     teamCount: playerViewModel.teams,
-                                                     goalkeeperCount: playerViewModel.goalkeeper))
-                    } label: {
-                        Text("Поділитись")
-                            .frame(width: 280, height: 50)
-                            .background(Color(red: 124 / 255, green: 222 / 255, blue: 220 / 255))
-                            .cornerRadius(10)
+            ZStack {
+                LinearGradient(
+                    gradient: Gradient(colors: [Color(hex: "004ff9"), Color(hex: "fff94c")]),
+                    startPoint: .leading,
+                    endPoint: .trailing
+                )
+                .ignoresSafeArea()
+                VStack {
+                    VStack(spacing: 20) {
+                        VStack(alignment: .leading) {
+                            Text("Команди: \(playerViewModel.teams)")
+                            
+                            Stepper("Воротар: \(playerViewModel.goalkeeper)",
+                                    value: $playerViewModel.goalkeeper,
+                                    in: 1...2,
+                                    step: 1)
+                        }
+                        .font(.system(size: 24, weight: .bold, design: .monospaced))
+                        Button(action: { },
+                               label: {
+                            NavigationLink {
+                                TeamsView(vm: TeamsViewModel(members: playerViewModel.members,
+                                                             teamCount: playerViewModel.teams,
+                                                             goalkeeperCount: playerViewModel.goalkeeper))
+                            } label: {
+                                Text("Поділитись")
+                                    .frame(height: 50)
+                                    .frame(maxWidth: .infinity)
+                                    .background(Color(red: 124 / 255, green: 222 / 255, blue: 220 / 255))
+                                    .cornerRadius(10)
+                            }
+                        })
+                        .disabled(!playerViewModel.isAvailableSplitting)
                     }
+                    .padding(30)
+                    .background(.cyan)
+                    .cornerRadius(20)
+                    Spacer()
+                    membersSelectionView
+                }.onChange(of: playerViewModel.members, perform: { members in
+                    playerViewModel.isAvailableSplitting(for: members)
                 })
-                .disabled(!playerViewModel.isAvailableSplitting)
-                .padding(.top, 50)
-                Spacer()
-                membersSelectionView
-            }.onChange(of: playerViewModel.members, perform: { members in
-                playerViewModel.isAvailableSplitting(for: members)
-            })
-            .frame(
-                maxWidth: .infinity,
-                maxHeight: .infinity,
-                alignment: .topLeading
-            )
+                .frame(
+                    maxWidth: .infinity,
+                    maxHeight: .infinity,
+                    alignment: .topLeading
+                )
             .padding(.init(top: 40, leading: 36, bottom: 40, trailing: 36))
+            }
         }
     }
     
@@ -72,7 +85,8 @@ extension SplitTeamView {
                           .options(options)
                           .pagePadding(vertical: .absolute(100),
                                        horizontal: .absolute(80))
-                        
+                          .frame(maxWidth: .infinity)
+            
             HStack {
                 Button(action: {
                     playerViewModel.removePlayer()
@@ -98,7 +112,7 @@ extension SplitTeamView {
                         playerViewModel.addMember(member)
                     }
                                     .presentationDetents([.medium, .large], selection: $sheetSize)
-                    .presentationDragIndicator(.visible)
+                                    .presentationDragIndicator(.visible)
                 })
                 .clipShape(Circle())
             }

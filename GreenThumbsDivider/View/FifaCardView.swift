@@ -32,6 +32,10 @@ struct FifaCardViewModel {
         model.playerPosition.abbreviation.uppercased()
     }
     
+    var showTape: Bool {
+        model.isGoalkeeper
+    }
+    
 }
 
 struct FifaCardView: View {
@@ -45,17 +49,9 @@ struct FifaCardView: View {
                 headSection
                 bottomSection
             }
-            ZStack {
-                MyCustomShape()
-                    .frame(width: 74, height: 125)
-                    .foregroundColor(.red)
-                    .offset(x: 63, y: -85)
-                Text("GK")
-                    .foregroundColor(.white)
-                    .rotationEffect(.degrees(60), anchor: .center)
-                    .offset(x: 72, y: -90)
+            if vm.showTape  {
+                TapeView(text: "GK")
             }
-           
         }
     }
     
@@ -149,3 +145,20 @@ struct FifaCardView_Previews: PreviewProvider {
     }
 }
 
+
+struct TapeView: View {
+    let text: String
+    
+    var body: some View {
+        ZStack {
+            TapeShape()
+                .frame(width: 74, height: 125)
+                .foregroundColor(.red)
+                .offset(x: 63, y: -85)
+            Text(text)
+                .foregroundColor(.white)
+                .rotationEffect(.degrees(60), anchor: .center)
+                .offset(x: 72, y: -90)
+        }
+    }
+}
