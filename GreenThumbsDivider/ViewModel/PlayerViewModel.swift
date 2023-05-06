@@ -16,6 +16,10 @@ class PlayerViewModel: ObservableObject {
     
     @Published var isAvailableSplitting: Bool = false
     
+    var isPlaceholderVisisble: Bool {
+        members.count == 0
+    }
+    
     func isAvailableSplitting(for members: [Player]) {
         if members.count > 3 || (members.count == 3 && goalkeeper == 1) {
             isAvailableSplitting = true
