@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="PGd-om-dXU">
+                                <rect key="frame" x="76.666666666666686" y="353.33333333333331" width="240" height="170.33333333333331"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="CfE-jk-GLB">
+                                <rect key="frame" x="76.666666666666686" y="548.66666666666663" width="240" height="53.666666666666629"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Green Thumbs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QxJ-Ap-2b1">
+                                        <rect key="frame" x="10" y="0.0" width="220" height="33"/>
+                                        <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="27"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passion and dedication" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGI-nH-X89">
+                                        <rect key="frame" x="42" y="39" width="155.66666666666666" height="14.666666666666664"/>
+                                        <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="12"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="PGd-om-dXU" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.610687" id="0mz-Sf-sGj"/>
+                            <constraint firstItem="PGd-om-dXU" firstAttribute="centerY" secondItem="Bcu-3y-fUS" secondAttribute="centerY" id="4Hh-rZ-KaY"/>
+                            <constraint firstItem="CfE-jk-GLB" firstAttribute="centerX" secondItem="PGd-om-dXU" secondAttribute="centerX" id="71L-8l-hOD"/>
+                            <constraint firstItem="PGd-om-dXU" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="0.2" id="S4s-oa-RJp"/>
+                            <constraint firstItem="CfE-jk-GLB" firstAttribute="trailing" secondItem="PGd-om-dXU" secondAttribute="trailing" id="cLH-kN-zO9"/>
+                            <constraint firstItem="CfE-jk-GLB" firstAttribute="top" secondItem="PGd-om-dXU" secondAttribute="bottom" constant="25" id="cvh-p0-EO8"/>
+                            <constraint firstItem="CfE-jk-GLB" firstAttribute="leading" secondItem="PGd-om-dXU" secondAttribute="leading" id="hKP-pF-2LK"/>
+                            <constraint firstItem="PGd-om-dXU" firstAttribute="centerX" secondItem="Bcu-3y-fUS" secondAttribute="centerX" id="mZ2-XH-bpQ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="logo" width="433.33334350585938" height="481.66665649414062"/>
+    </resources>
+</document>

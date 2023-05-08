@@ -51,7 +51,6 @@ final class TeamsViewModel {
         let membersPerTeam = totalMembers / teamCount
         var extraMembers = totalMembers % teamCount
         
-        // Shuffle the members array randomly
         var shuffledMembers = members.shuffled()
         
         // Assign members to each team
@@ -73,6 +72,7 @@ final class TeamsViewModel {
             teams[i] = membersForTeam
         }
         
+        //add goalkeeprs to each team
         teams.sorted { $0.value.count < $1.value.count }.forEach { team in
             guard goalkeepers.count > 0 else {
                 return

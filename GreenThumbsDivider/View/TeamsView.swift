@@ -19,32 +19,21 @@ struct TeamsView: View {
         VStack(spacing: 10) {
             teamViews()
             Spacer()
-            //            VStack {
-            //                LineDivider(text: "Goalkeeper", lineColor: .black)
-            //                goalkeeperViews()
-            //            }
-                .frame(maxWidth: .infinity)
-            
         }
         .background(
             LinearGradient(gradient: Gradient(colors: [.purple, .cyan, .yellow]), startPoint: .top, endPoint: .bottom)
         )
         .toolbar {
             ToolbarItem(placement: .principal) {
-                Text("Заруба")
+                Text("Game")
                     .font(.system(size: 20, weight: .bold, design: .default))
             }
         }
     }
-    
-//    //TODO: add in the right up corner the line with mark GK.
-    
-    func teamViews() -> some View {
-        var options: ScaleTransformViewOptions {
-            .layout(.linear)
-        }
         
-        var teams = vm.assignMembersToTeams()
+    func teamViews() -> some View {
+        let options: ScaleTransformViewOptions = .layout(.linear)
+        let teams = vm.assignMembersToTeams()
         
         return ForEach(teams.sorted(by: { $0.key < $1.key }), id: \.key) { key, players in
                 VStack(spacing: 40) {
@@ -63,23 +52,6 @@ struct TeamsView: View {
             }
         }
 }
-
-struct LineDivider: View {
-    let text: String
-    let lineColor: Color
-    
-    var body: some View {
-        HStack {
-            lineColor.frame(height: 2)
-                .padding(.leading, 20)
-            Text(text)
-                .font(.system(size: 20, weight: .heavy))
-            lineColor.frame(height: 2)
-                .padding(.trailing, 20)
-        }
-    }
-}
-
 
 //struct TeamsView_Previews: PreviewProvider {
 //    static var previews: some View {

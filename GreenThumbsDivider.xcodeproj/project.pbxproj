@@ -20,6 +20,8 @@
 		E84D05DD29FA922300DAA721 /* TeamsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84D05DC29FA922300DAA721 /* TeamsViewModel.swift */; };
 		E878EA672A060163000A14D2 /* TapeShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = E878EA662A060163000A14D2 /* TapeShape.swift */; };
 		E878EA692A06130D000A14D2 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = E878EA682A06130D000A14D2 /* Color+Hex.swift */; };
+		E878EA6B2A08AE27000A14D2 /* LineDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E878EA6A2A08AE27000A14D2 /* LineDivider.swift */; };
+		E878EA6D2A08DF01000A14D2 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E878EA6C2A08DF01000A14D2 /* Launch Screen.storyboard */; };
 		E8C21F2229E4257B00369E39 /* GreenThumbsDividerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F2129E4257B00369E39 /* GreenThumbsDividerApp.swift */; };
 		E8C21F2429E4257B00369E39 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F2329E4257B00369E39 /* ContentView.swift */; };
 		E8C21F2629E4257E00369E39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8C21F2529E4257E00369E39 /* Assets.xcassets */; };
@@ -56,6 +58,8 @@
 		E84D05DC29FA922300DAA721 /* TeamsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsViewModel.swift; sourceTree = "<group>"; };
 		E878EA662A060163000A14D2 /* TapeShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapeShape.swift; sourceTree = "<group>"; };
 		E878EA682A06130D000A14D2 /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
+		E878EA6A2A08AE27000A14D2 /* LineDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineDivider.swift; sourceTree = "<group>"; };
+		E878EA6C2A08DF01000A14D2 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		E8C21F1E29E4257B00369E39 /* GreenThumbsDivider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GreenThumbsDivider.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8C21F2129E4257B00369E39 /* GreenThumbsDividerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenThumbsDividerApp.swift; sourceTree = "<group>"; };
 		E8C21F2329E4257B00369E39 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -118,6 +122,7 @@
 				E84D05D429F964D500DAA721 /* ImagePicker.swift */,
 				E8DC48482A03B57700F7D9B5 /* FifaCardShape.swift */,
 				E878EA662A060163000A14D2 /* TapeShape.swift */,
+				E878EA6A2A08AE27000A14D2 /* LineDivider.swift */,
 			);
 			path = UIViewRepresentable;
 			sourceTree = "<group>";
@@ -190,6 +195,7 @@
 				E8C21F2729E4257E00369E39 /* Preview Content */,
 				E8C21F3429E4386800369E39 /* GridStack.swift */,
 				E8C21F3E29E54BD800369E39 /* Carousel */,
+				E878EA6C2A08DF01000A14D2 /* Launch Screen.storyboard */,
 			);
 			path = GreenThumbsDivider;
 			sourceTree = "<group>";
@@ -285,6 +291,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E878EA6D2A08DF01000A14D2 /* Launch Screen.storyboard in Resources */,
 				E8C21F2929E4257E00369E39 /* Preview Assets.xcassets in Resources */,
 				E8C21F2629E4257E00369E39 /* Assets.xcassets in Resources */,
 			);
@@ -317,6 +324,7 @@
 				E8C21F2429E4257B00369E39 /* ContentView.swift in Sources */,
 				E8C21F3D29E54B9F00369E39 /* CarouselView.swift in Sources */,
 				E8C21F3B29E54B8000369E39 /* PlayerViewModel.swift in Sources */,
+				E878EA6B2A08AE27000A14D2 /* LineDivider.swift in Sources */,
 				E8C21F2E29E4257E00369E39 /* GreenThumbsDivider.xcdatamodeld in Sources */,
 				E84D05A429F6671000DAA721 /* PentagonView.swift in Sources */,
 				E84D05AE29F90B8D00DAA721 /* BottomSheetView.swift in Sources */,
@@ -462,6 +470,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.3;
@@ -493,6 +502,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.3;

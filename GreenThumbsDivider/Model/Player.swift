@@ -65,11 +65,11 @@ extension Player: Codable {
         try container.encode(skills, forKey: .skills)
         try container.encode(playerPosition, forKey: .position)
 
-        if let countryImageData = country.jpegData(compressionQuality: 0.6) {
+        if let countryImageData = country.jpegData(compressionQuality: 1.0) {
             try container.encode(countryImageData, forKey: .country)
         }
         
-        if let club, let clubImageData = club.jpegData(compressionQuality: 0.6) {
+        if let club, let clubImageData = club.jpegData(compressionQuality: 1.0) {
             try container.encode(clubImageData, forKey: .club)
         }
         
