@@ -10,7 +10,8 @@ import PhotosUI
 
 struct BottomSheetView: View {
     @StateObject var viewModel: BottomSheetViewModel
-    @StateObject var countryPickerViewModel = CountryPickerViewModel()
+    @StateObject var countryPickerViewModel = ImagePickerViewModel(source: ["Estonia", "France", "Germany", "Ireland", "Italy", "Monaco", "Nigeria", "Poland", "Spain", "UK", "US", "Ukraine"])
+//    @StateObject var clubPickerViewModel = ImagePickerViewModel(source: ["Arsenal", "Barcelona", "Chelsea", "Dynamo", "Milan", "Real Madrid", "Shakhtar", "Green Thumbs"])
     @StateObject var skillsVieModel = SkillsViewModel()
     @Binding var isPresented: Bool
     
@@ -37,10 +38,8 @@ struct BottomSheetView: View {
                 TextField("Surname", text: $viewModel.surname)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.horizontal, 20)
-                
-                CountryPickerView(vm: countryPickerViewModel)
+                PickerView(vm: countryPickerViewModel, pickerStyle: .wheel)
                     .frame(width: 100, height: 100)
-                
                 SkillsSliderView(vm: skillsVieModel)
                     .frame(height: 150)
                 

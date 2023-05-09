@@ -7,30 +7,21 @@
 
 import SwiftUI
 
-class CountryPickerViewModel: ObservableObject {
-    let countries: [String] = ["Estonia", "France", "Germany", "Ireland", "Italy", "Monaco", "Nigeria", "Poland", "Spain", "UK", "US", "Ukraine"]
-    
-    @Published var selectedImageIndex = 0
-    
-    var selectedImage: UIImage {
-        UIImage(named: countries[selectedImageIndex])!
-    }
-    
-}
-
-struct CountryPickerView: View {
-    @ObservedObject var vm: CountryPickerViewModel
+struct PickerView<Style: PickerStyle>: View {
+    @ObservedObject var vm: ImagePickerViewModel
+    let pickerStyle: Style
 
     var body: some View {
         Picker(selection: $vm.selectedImageIndex, label: Text("")) {
-            ForEach(0..<vm.countries.count, id: \.self) { index in
-                Image(vm.countries[index])
+            ForEach(0..<vm.source.count, id: \.self) { index in
+                Image(vm.source[index])
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 50, height: 50)
+                    .padding([.top, .bottom], 10)
             }
         }
-        .pickerStyle(.wheel)
+        .pickerStyle(pickerStyle)
         .onChange(of: vm.selectedImageIndex, perform: { newValue in
             print("Index is changed \(vm.selectedImageIndex)")
         })
@@ -39,6 +30,6 @@ struct CountryPickerView: View {
 
 struct CountryPickerView__Previews: PreviewProvider {
     static var previews: some View {
-        CountryPickerView(vm: CountryPickerViewModel())
+        PickerView(vm: ImagePickerViewModel(source: ["Estonia", "France", "Germany", "Ireland", "Italy", "Monaco", "Nigeria", "Poland", "Spain", "UK", "US", "Ukraine"]), pickerStyle: .wheel)
     }
 }

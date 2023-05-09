@@ -13,7 +13,7 @@ struct Player: Identifiable, Hashable {
     let nickName: String
     var image: UIImage?
     var isGoalkeeper: Bool = false
-    var club: UIImage? = UIImage(named: "logo")
+    var club: UIImage? = UIImage(named: "Green Thumbs")
     var country: UIImage
     var skills: [Skills] = [.def(0), .dri(0), .pac(0), .pas(0), .phy(0), .sho(0)]
     var playerPosition: Position

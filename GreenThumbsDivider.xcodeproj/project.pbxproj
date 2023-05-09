@@ -22,6 +22,7 @@
 		E878EA692A06130D000A14D2 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = E878EA682A06130D000A14D2 /* Color+Hex.swift */; };
 		E878EA6B2A08AE27000A14D2 /* LineDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E878EA6A2A08AE27000A14D2 /* LineDivider.swift */; };
 		E878EA6D2A08DF01000A14D2 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E878EA6C2A08DF01000A14D2 /* Launch Screen.storyboard */; };
+		E878EA8F2A0952BF000A14D2 /* ImagePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E878EA8E2A0952BF000A14D2 /* ImagePickerViewModel.swift */; };
 		E8C21F2229E4257B00369E39 /* GreenThumbsDividerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F2129E4257B00369E39 /* GreenThumbsDividerApp.swift */; };
 		E8C21F2429E4257B00369E39 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F2329E4257B00369E39 /* ContentView.swift */; };
 		E8C21F2629E4257E00369E39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8C21F2529E4257E00369E39 /* Assets.xcassets */; };
@@ -60,6 +61,7 @@
 		E878EA682A06130D000A14D2 /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
 		E878EA6A2A08AE27000A14D2 /* LineDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineDivider.swift; sourceTree = "<group>"; };
 		E878EA6C2A08DF01000A14D2 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		E878EA8E2A0952BF000A14D2 /* ImagePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerViewModel.swift; sourceTree = "<group>"; };
 		E8C21F1E29E4257B00369E39 /* GreenThumbsDivider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GreenThumbsDivider.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8C21F2129E4257B00369E39 /* GreenThumbsDividerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenThumbsDividerApp.swift; sourceTree = "<group>"; };
 		E8C21F2329E4257B00369E39 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				E84D05DC29FA922300DAA721 /* TeamsViewModel.swift */,
 				E8DC484E2A03F26700F7D9B5 /* FifaCardViewModel.swift */,
 				E8C5B3402A051D0D008A42DA /* SkillsVieModel.swift */,
+				E878EA8E2A0952BF000A14D2 /* ImagePickerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				E8C21F3D29E54B9F00369E39 /* CarouselView.swift in Sources */,
 				E8C21F3B29E54B8000369E39 /* PlayerViewModel.swift in Sources */,
 				E878EA6B2A08AE27000A14D2 /* LineDivider.swift in Sources */,
+				E878EA8F2A0952BF000A14D2 /* ImagePickerViewModel.swift in Sources */,
 				E8C21F2E29E4257E00369E39 /* GreenThumbsDivider.xcdatamodeld in Sources */,
 				E84D05A429F6671000DAA721 /* PentagonView.swift in Sources */,
 				E84D05AE29F90B8D00DAA721 /* BottomSheetView.swift in Sources */,
