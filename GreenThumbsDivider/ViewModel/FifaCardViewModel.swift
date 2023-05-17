@@ -11,7 +11,7 @@ struct FifaCardViewModel {
     let model: Player
     
     var nickname: String {
-        model.nickName.uppercased()
+        "\(model.name.prefix(1).uppercased()). \(model.nickName.uppercased())"
     }
 
     var skills: [String] {

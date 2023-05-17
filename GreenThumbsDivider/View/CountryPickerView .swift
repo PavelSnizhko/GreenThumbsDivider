@@ -17,8 +17,7 @@ struct PickerView<Style: PickerStyle>: View {
                 Image(vm.source[index])
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 50, height: 50)
-                    .padding([.top, .bottom], 10)
+                    .frame(width: 30, height: 30)
             }
         }
         .pickerStyle(pickerStyle)
@@ -30,6 +29,10 @@ struct PickerView<Style: PickerStyle>: View {
 
 struct CountryPickerView__Previews: PreviewProvider {
     static var previews: some View {
-        PickerView(vm: ImagePickerViewModel(source: ["Estonia", "France", "Germany", "Ireland", "Italy", "Monaco", "Nigeria", "Poland", "Spain", "UK", "US", "Ukraine"]), pickerStyle: .wheel)
+        VStack{
+            PickerView(vm: ImagePickerViewModel(source: ["Arsenal", "Barcelona", "Chelsea", "Dynamo", "Milan", "Real Madrid", "Shakhtar", "Green Thumbs"]), pickerStyle: .wheel)
+            PickerView(vm: ImagePickerViewModel(source: ["Estonia", "France", "Ukraine", "Germany", "Ireland", "Italy", "Monaco", "Nigeria", "Poland", "Spain", "UK", "US"], initialSelectedIndex: 2), pickerStyle: .wheel)
+        }
+        
     }
 }

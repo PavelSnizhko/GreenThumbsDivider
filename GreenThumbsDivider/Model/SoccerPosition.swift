@@ -18,23 +18,23 @@ enum Position: String, CaseIterable, Codable, Hashable {
     case forward = "Forward"
     
     var abbreviation: String {
-            switch self {
-            case .goalkeeper:
-                return "GK"
-            case .centerBack:
-                return "CB"
-            case .fullBack:
-                return "FB"
-            case .defensiveMidfielder:
-                return "DM"
-            case .centralMidfielder:
-                return "CM"
-            case .attackingMidfielder:
-                return "AM"
-            case .winger:
-                return "WG"
-            case .forward:
-                return "FW"
-            }
+        switch self {
+        case .goalkeeper:
+            return "GK"
+        case .centerBack:
+            return "CB"
+        case .fullBack:
+            return "FB"
+        case .defensiveMidfielder:
+            return "DM"
+        case .centralMidfielder:
+            return "CM"
+        case .attackingMidfielder:
+            return "AM"
+        case .winger:
+            return "WG"
+        case .forward:
+            return "FW"
         }
+    }
 }

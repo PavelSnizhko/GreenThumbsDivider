@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "ukraine_flag 3.png",
+      "filename" : "default_image.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "ukraine_flag 1.png",
+      "filename" : "default_image@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "ukraine_flag 2.png",
+      "filename" : "default_image@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

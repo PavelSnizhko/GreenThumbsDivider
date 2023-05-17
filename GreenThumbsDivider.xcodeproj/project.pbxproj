@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E827DF8E2A14E38E00AA107B /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E827DF8D2A14E38E00AA107B /* GameView.swift */; };
+		E827DF902A14E87600AA107B /* TimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E827DF8F2A14E87600AA107B /* TimePickerView.swift */; };
+		E827DF922A14E98500AA107B /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E827DF912A14E98500AA107B /* TimerView.swift */; };
+		E827DF952A15010100AA107B /* StartButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E827DF942A15010100AA107B /* StartButtonStyle.swift */; };
+		E827DF972A15138D00AA107B /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E827DF962A15138D00AA107B /* CircularProgressView.swift */; };
+		E827DF992A151A7900AA107B /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E827DF982A151A7900AA107B /* TimerViewModel.swift */; };
+		E827DF9B2A151DC400AA107B /* Int+timestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E827DF9A2A151DC400AA107B /* Int+timestamp.swift */; };
+		E827DF9D2A1520EC00AA107B /* MainButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E827DF9C2A1520EC00AA107B /* MainButtonStyle.swift */; };
 		E84D059F29F0408100DAA721 /* PureSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E84D059E29F0408100DAA721 /* PureSwiftUI */; };
 		E84D05A129F2804600DAA721 /* CloudShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84D05A029F2804600DAA721 /* CloudShape.swift */; };
 		E84D05A429F6671000DAA721 /* PentagonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84D05A329F6670F00DAA721 /* PentagonView.swift */; };
@@ -47,6 +55,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E827DF8D2A14E38E00AA107B /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		E827DF8F2A14E87600AA107B /* TimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerView.swift; sourceTree = "<group>"; };
+		E827DF912A14E98500AA107B /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		E827DF942A15010100AA107B /* StartButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartButtonStyle.swift; sourceTree = "<group>"; };
+		E827DF962A15138D00AA107B /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
+		E827DF982A151A7900AA107B /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
+		E827DF9A2A151DC400AA107B /* Int+timestamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+timestamp.swift"; sourceTree = "<group>"; };
+		E827DF9C2A1520EC00AA107B /* MainButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButtonStyle.swift; sourceTree = "<group>"; };
 		E84D05A029F2804600DAA721 /* CloudShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudShape.swift; sourceTree = "<group>"; };
 		E84D05A329F6670F00DAA721 /* PentagonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PentagonView.swift; sourceTree = "<group>"; };
 		E84D05A529F681E900DAA721 /* TeamsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsView.swift; sourceTree = "<group>"; };
@@ -98,6 +114,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E827DF932A14FF8500AA107B /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				E827DF8F2A14E87600AA107B /* TimePickerView.swift */,
+				E827DF912A14E98500AA107B /* TimerView.swift */,
+				E827DF942A15010100AA107B /* StartButtonStyle.swift */,
+				E827DF962A15138D00AA107B /* CircularProgressView.swift */,
+				E827DF982A151A7900AA107B /* TimerViewModel.swift */,
+			);
+			path = Timer;
+			sourceTree = "<group>";
+		};
 		E84D05A929F7ED2600DAA721 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +188,9 @@
 				E8DC48462A03B55100F7D9B5 /* FifaCardView.swift */,
 				E8C5B3222A04E4ED008A42DA /* CountryPickerView .swift */,
 				E8C5B33E2A050F89008A42DA /* SkillsSliderView.swift */,
+				E827DF8D2A14E38E00AA107B /* GameView.swift */,
+				E827DF932A14FF8500AA107B /* Timer */,
+				E827DF9C2A1520EC00AA107B /* MainButtonStyle.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -224,6 +255,7 @@
 			children = (
 				E8DC48442A02A20900F7D9B5 /* View+Modifiers.swift */,
 				E878EA682A06130D000A14D2 /* Color+Hex.swift */,
+				E827DF9A2A151DC400AA107B /* Int+timestamp.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -307,7 +339,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E827DF922A14E98500AA107B /* TimerView.swift in Sources */,
 				E8DC48492A03B57700F7D9B5 /* FifaCardShape.swift in Sources */,
+				E827DF902A14E87600AA107B /* TimePickerView.swift in Sources */,
 				E8DC484D2A03F04300F7D9B5 /* Skills.swift in Sources */,
 				E8C21F3729E446AC00369E39 /* SplitTeamView.swift in Sources */,
 				E8C21F3529E4386800369E39 /* GridStack.swift in Sources */,
@@ -315,14 +349,19 @@
 				E878EA692A06130D000A14D2 /* Color+Hex.swift in Sources */,
 				E8C5B3232A04E4ED008A42DA /* CountryPickerView .swift in Sources */,
 				E8DC48472A03B55100F7D9B5 /* FifaCardView.swift in Sources */,
+				E827DF9D2A1520EC00AA107B /* MainButtonStyle.swift in Sources */,
 				E84D05A829F6C7B400DAA721 /* FileManager+DocumentsDirectory.swift in Sources */,
 				E84D05D529F964D500DAA721 /* ImagePicker.swift in Sources */,
+				E827DF992A151A7900AA107B /* TimerViewModel.swift in Sources */,
+				E827DF952A15010100AA107B /* StartButtonStyle.swift in Sources */,
 				E8C21F2B29E4257E00369E39 /* Persistence.swift in Sources */,
 				E84D05A129F2804600DAA721 /* CloudShape.swift in Sources */,
 				E84D05DD29FA922300DAA721 /* TeamsViewModel.swift in Sources */,
 				E8DC484B2A03EFFE00F7D9B5 /* SoccerPosition.swift in Sources */,
 				E84D05AB29F7ED4300DAA721 /* FileManagerService.swift in Sources */,
+				E827DF9B2A151DC400AA107B /* Int+timestamp.swift in Sources */,
 				E8DC484F2A03F26700F7D9B5 /* FifaCardViewModel.swift in Sources */,
+				E827DF8E2A14E38E00AA107B /* GameView.swift in Sources */,
 				E84D05DA29F965F100DAA721 /* SourcePicker.swift in Sources */,
 				E8C21F2429E4257B00369E39 /* ContentView.swift in Sources */,
 				E8C21F3D29E54B9F00369E39 /* CarouselView.swift in Sources */,
@@ -333,6 +372,7 @@
 				E84D05A429F6671000DAA721 /* PentagonView.swift in Sources */,
 				E84D05AE29F90B8D00DAA721 /* BottomSheetView.swift in Sources */,
 				E84D05A629F681E900DAA721 /* TeamsView.swift in Sources */,
+				E827DF972A15138D00AA107B /* CircularProgressView.swift in Sources */,
 				E8C5B3412A051D0D008A42DA /* SkillsVieModel.swift in Sources */,
 				E8DC48452A02A20900F7D9B5 /* View+Modifiers.swift in Sources */,
 				E8C5B33F2A050F89008A42DA /* SkillsSliderView.swift in Sources */,

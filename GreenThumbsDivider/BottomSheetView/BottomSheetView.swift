@@ -11,7 +11,7 @@ import PhotosUI
 struct BottomSheetView: View {
     @StateObject var viewModel: BottomSheetViewModel
     @StateObject var countryPickerViewModel = ImagePickerViewModel(source: ["Estonia", "France", "Germany", "Ireland", "Italy", "Monaco", "Nigeria", "Poland", "Spain", "UK", "US", "Ukraine"])
-//    @StateObject var clubPickerViewModel = ImagePickerViewModel(source: ["Arsenal", "Barcelona", "Chelsea", "Dynamo", "Milan", "Real Madrid", "Shakhtar", "Green Thumbs"])
+    @StateObject var clubPickerViewModel = ImagePickerViewModel(source: ["Arsenal", "Barcelona", "Chelsea", "Dynamo", "Milan", "Real Madrid", "Shakhtar", "Green Thumbs"])
     @StateObject var skillsVieModel = SkillsViewModel()
     @Binding var isPresented: Bool
     
@@ -20,7 +20,7 @@ struct BottomSheetView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
-                Text("Add a new player")
+                Text("New player")
                     .font(.headline)
                 
                 if let image = viewModel.image {
@@ -30,70 +30,100 @@ struct BottomSheetView: View {
                         .frame(width: 200, height: 200)
                         .clipShape(Circle())
                 }
-                
-                TextField("Name", text: $viewModel.name)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.horizontal, 20)
-                
-                TextField("Surname", text: $viewModel.surname)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.horizontal, 20)
-                PickerView(vm: countryPickerViewModel, pickerStyle: .wheel)
-                    .frame(width: 100, height: 100)
+                textfileds
+                pickerViews
                 SkillsSliderView(vm: skillsVieModel)
                     .frame(height: 150)
                 
-                HStack(spacing: 20) {
-                    Button(action: {
-                        viewModel.showPicker = true
-                        viewModel.showPhotoPicker()
-                    }, label: {
-                        Image(systemName: "photo")
-                            .foregroundColor(.blue)
-                    })
-                    
-                    Button(action: {
-                        viewModel.showPicker = true
-                        viewModel.showPhotoPicker()
-                    }, label: {
-                        Image(systemName: "camera")
-                            .foregroundColor(.blue)
-                    })
-                    doneButton
-                }
-                .onDisappear {
-                    viewModel.contryImage = countryPickerViewModel.selectedImage
-                    viewModel.skills = Skills.mapToSkills(from: skillsVieModel.skills) 
-                    result(viewModel.member)
-                    
-                }.sheet(isPresented: $viewModel.showPicker){
-                    ImagePicker(sourceType: viewModel.source == .library ? .photoLibrary : .camera,
-                                selectedImage: $viewModel.image)
-                    .ignoresSafeArea()
-                }
+                photoPickers
                 .padding(.top, 20)
                 Spacer()
             }
-            .padding(.top, 10)
             .frame(minWidth: 0, maxWidth: .infinity)
             .padding(.vertical, 30)
             .background(Color.white)
             .cornerRadius(30)
-            .padding(.horizontal, 20)
+            .padding([.horizontal, .top], 20)
             .animation(.spring())
             .edgesIgnoringSafeArea(.bottom)
         }
     }
 }
 
-extension BottomSheetView {
+private extension BottomSheetView {
+    
+    var pickerViews: some View {
+        Group {
+            LabeledContent(content: {
+                PickerView(vm: countryPickerViewModel, pickerStyle: .wheel)
+                    .frame(width: 200, height: 100)
+            }, label: {
+                Text("Country:").font(.system(size: 18, weight: .medium, design: .rounded))
+            })
+            LabeledContent(content: {
+                PickerView(vm: clubPickerViewModel, pickerStyle: .wheel)
+                    .frame(width: 200, height: 100)
+            }, label: {
+                Text("Club:").font(.system(size: 18, weight: .medium, design: .rounded))
+            })
+
+        }
+        .padding(.horizontal, 16)
+    }
+    
+    var photoPickers: some View {
+        HStack(spacing: 20) {
+            Button(action: {
+                viewModel.showPicker = true
+                viewModel.showPhotoPicker()
+            }, label: {
+                Image(systemName: "photo")
+                    .foregroundColor(.blue)
+            })
+            
+            Button(action: {
+                viewModel.showPicker = true
+                viewModel.showPhotoPicker()
+            }, label: {
+                Image(systemName: "camera")
+                    .foregroundColor(.blue)
+            })
+            doneButton
+        }
+        .onDisappear {
+            viewModel.contryImage = countryPickerViewModel.selectedImage
+            viewModel.skills = Skills.mapToSkills(from: skillsVieModel.skills)
+//            viewModel.playerPosition = skillsVieModel.mapPosition(from: <#T##String#>)
+            viewModel.club = clubPickerViewModel.selectedImage
+            result(viewModel.member)
+        }
+        .sheet(isPresented: $viewModel.showPicker){
+            ImagePicker(sourceType: viewModel.source == .library ? .photoLibrary : .camera,
+                        selectedImage: $viewModel.image)
+            .ignoresSafeArea()
+        }
+    }
+    
+    var textfileds: some View {
+        VStack(spacing: 5) {
+            Group {
+                TextField("Name", text: $viewModel.name)
+                    
+                TextField("Surname", text: $viewModel.surname)
+            }
+            .textFieldStyle(RoundedBorderTextFieldStyle())
+            .padding(.horizontal, 16)
+        }
+        
+    }
     
     var doneButton: some View {
         Button {
+            viewModel.checkFields()
             isPresented.toggle()
         } label: {
             HStack {
-                Text("Готово")
+                Text("Done")
             }
             .font(.headline)
             .padding()
@@ -103,6 +133,10 @@ extension BottomSheetView {
             .cornerRadius(15)
         }
         .disabled(!viewModel.isDoneButtonAvailable)
+    }
+    
+    enum Field: Int, CaseIterable {
+        case name, surname
     }
 }
 

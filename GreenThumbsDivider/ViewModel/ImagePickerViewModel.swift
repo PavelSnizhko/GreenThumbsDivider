@@ -6,14 +6,16 @@
 //
 
 import SwiftUI
+import Combine
 
 final class ImagePickerViewModel: ObservableObject {
     let source: [String]
     
-    @Published var selectedImageIndex = 0
+    @Published var selectedImageIndex: Int
     
-    init(source: [String]) {
+    init(source: [String], initialSelectedIndex: Int = 0) {
         self.source = source
+        selectedImageIndex = initialSelectedIndex
     }
     
     var selectedImage: UIImage {
