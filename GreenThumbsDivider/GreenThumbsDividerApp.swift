@@ -12,7 +12,7 @@ struct GreenThumbsDividerApp: App {
 
     var body: some Scene {
         WindowGroup {
-            SplitTeamView()
+            MainView()
         }
     }
 }

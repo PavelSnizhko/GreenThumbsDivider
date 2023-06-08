@@ -7,9 +7,13 @@
 
 import SwiftUI
 
-struct GameView: View {
+struct GameView: View { 
     var body: some View {
-        TimerView()
+        VStack {
+            GameScoreView()
+            TimerView()
+        }
+        .background(.black)
     }
 }
 

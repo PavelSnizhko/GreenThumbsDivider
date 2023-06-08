@@ -15,31 +15,29 @@ struct SplitTeamView: View {
     @State var sheetSize: PresentationDetent = .large
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                LinearGradient(
-                    gradient: Gradient(colors: [Color(hex: "004ff9"), Color(hex: "fff94c")]),
-                    startPoint: .leading,
-                    endPoint: .trailing
-                )
-                .ignoresSafeArea()
-                VStack {
-                    dividerCard
-                    Spacer()
-                    membersSelectionView
-                }.onChange(of: playerViewModel.members, perform: { members in
-                    playerViewModel.isAvailableSplitting(for: members)
-                })
-                .frame(
-                    maxWidth: .infinity,
-                    maxHeight: .infinity,
-                    alignment: .topLeading
-                )
-                .padding(.init(top: 40, leading: 16, bottom: 40, trailing: 16))
-            }
+        ZStack {
+            LinearGradient(
+                gradient: Gradient(colors: [Color(hex: "004ff9"), Color(hex: "fff94c")]),
+                startPoint: .leading,
+                endPoint: .trailing
+            )
+            .ignoresSafeArea()
+            VStack {
+                dividerCard
+                Spacer()
+                membersSelectionView
+            }.onChange(of: playerViewModel.members, perform: { members in
+                playerViewModel.isAvailableSplitting(for: members)
+            })
+            .frame(
+                maxWidth: .infinity,
+                maxHeight: .infinity,
+                alignment: .topLeading
+            )
+            .padding(.init(top: 40, leading: 16, bottom: 0, trailing: 16))
         }
+        .background(.clear)
     }
-    
 }
 
 //MARK: - Views
@@ -120,7 +118,6 @@ extension SplitTeamView {
                               .options(.layout(.linear))
                               .pagePadding(vertical: .absolute(100),
                                            horizontal: .absolute(80))
-                              .ignoresSafeArea()
             }
             
             if !playerViewModel.isPlaceholderVisisble {
