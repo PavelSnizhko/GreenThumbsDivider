@@ -14,6 +14,8 @@ struct SplitTeamView: View {
     @State var showingBottomSheet = false
     @State var sheetSize: PresentationDetent = .large
     
+    private let isSmallHeightSize =  UIScreen.main.bounds.height <= DeviceScreenSize.iPhone8.screenHeight
+    
     var body: some View {
         ZStack {
             LinearGradient(
@@ -22,10 +24,10 @@ struct SplitTeamView: View {
                 endPoint: .trailing
             )
             .ignoresSafeArea()
-            VStack {
+            VStack(spacing: 10) {
                 dividerCard
-                Spacer()
                 membersSelectionView
+                    .frame(minHeight: 350)
             }.onChange(of: playerViewModel.members, perform: { members in
                 playerViewModel.isAvailableSplitting(for: members)
             })
@@ -34,7 +36,7 @@ struct SplitTeamView: View {
                 maxHeight: .infinity,
                 alignment: .topLeading
             )
-            .padding(.init(top: 40, leading: 16, bottom: 0, trailing: 16))
+            .padding(.init(top: 0, leading: 16, bottom: 0, trailing: 16))
         }
         .background(.clear)
     }
@@ -47,8 +49,8 @@ extension SplitTeamView {
     //MARK: - Divider Section
     
     var dividerCard: some View {
-        VStack(spacing: 20) {
-            VStack(alignment: .leading) {
+        VStack(spacing: 10) {
+            VStack(alignment: .leading, spacing: 4) {
                 Text("\(Constant.teamsTitle): \(playerViewModel.teams)")
                 
                 Stepper("\(Constant.goalkeepersTittle): \(playerViewModel.goalkeeper)",
@@ -56,7 +58,7 @@ extension SplitTeamView {
                         in: 1...2,
                         step: 1)
             }
-            .font(.system(size: 22, weight: .bold, design: .monospaced))
+            .font(.system(size: isSmallHeightSize ? 18 : 22, weight: .bold, design: .monospaced))
             .lineLimit(1)
             Button(action: { },
                    label: {
@@ -74,7 +76,7 @@ extension SplitTeamView {
             })
             .disabled(!playerViewModel.isAvailableSplitting)
         }
-        .padding(30)
+        .padding(isSmallHeightSize ? 15 : 30)
         .background(.cyan)
         .cornerRadius(20)
         .shadow(radius: 10)
@@ -113,7 +115,12 @@ extension SplitTeamView {
             } else {
                 ScalePageView(playerViewModel.members,
                               selection: $playerViewModel.memeberId) { item in
-                    FifaCardView(vm: FifaCardViewModel(model: item))
+                    if isSmallHeightSize {
+                        FifaCardView(vm: FifaCardViewModel(model: item), cardSize: CGSize(width: 200, height: 260))
+                    } else {
+                        FifaCardView(vm: FifaCardViewModel(model: item), cardSize: CGSize(width: 200, height: 300))
+                    }
+                    
                 }
                               .options(.layout(.linear))
                               .pagePadding(vertical: .absolute(100),

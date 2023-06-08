@@ -57,6 +57,7 @@
 		E8E212C12A31CE49005F8067 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E212C02A31CE49005F8067 /* MainView.swift */; };
 		E8E212C42A31CEE0005F8067 /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E212C32A31CEE0005F8067 /* TeamView.swift */; };
 		E8E212C62A31CF16005F8067 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E212C52A31CF16005F8067 /* StatisticsView.swift */; };
+		E8E212C82A321873005F8067 /* DeviceScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E212C72A321873005F8067 /* DeviceScreenSize.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,6 +110,7 @@
 		E8E212C02A31CE49005F8067 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		E8E212C32A31CEE0005F8067 /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
 		E8E212C52A31CF16005F8067 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
+		E8E212C72A321873005F8067 /* DeviceScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceScreenSize.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,6 +279,7 @@
 				E8DC48442A02A20900F7D9B5 /* View+Modifiers.swift */,
 				E878EA682A06130D000A14D2 /* Color+Hex.swift */,
 				E827DF9A2A151DC400AA107B /* Int+timestamp.swift */,
+				E8E212C72A321873005F8067 /* DeviceScreenSize.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				E84D05A429F6671000DAA721 /* PentagonView.swift in Sources */,
 				E84D05AE29F90B8D00DAA721 /* BottomSheetView.swift in Sources */,
 				E84D05A629F681E900DAA721 /* TeamsView.swift in Sources */,
+				E8E212C82A321873005F8067 /* DeviceScreenSize.swift in Sources */,
 				E827DF972A15138D00AA107B /* CircularProgressView.swift in Sources */,
 				E8E212BF2A31A8C6005F8067 /* Tabs.swift in Sources */,
 				E8C5B3412A051D0D008A42DA /* SkillsVieModel.swift in Sources */,

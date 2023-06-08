@@ -9,19 +9,22 @@ import SwiftUI
 
 struct FifaCardView: View {
     let vm: FifaCardViewModel
+    let cardSize: CGSize
     
     var body: some View {
         ZStack {
             FifaCardShape()
-                .frame(width: 200, height: 300)
+                .frame(width: cardSize.width, height: cardSize.height)
             VStack(spacing: 10)  {
                 headSection
                 bottomSection
             }
+            .padding(.bottom, 20)
             if vm.showTape  {
                 TapeView(text: "GK")
             }
         }
+        .frame(width: cardSize.width, height: cardSize.height)
     }
     
 }
@@ -31,37 +34,37 @@ extension FifaCardView {
         VStack(spacing: 10) {
             HStack {
                 VStack(spacing: 5) {
-                    Group {
+                    VStack(spacing: 0) {
                         Text("\(vm.talent)")
                         Text(vm.position)
-                            .underline()
-                    }
-                        .foregroundColor(.white)
+                        Color.white.frame(width: 30, height: 1)
+                    }.foregroundColor(.white)
                     VStack(spacing: 0) {
                         Image(uiImage: vm.countryImage)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 40, height: 30)
-                        Color.white.frame(width: 20, height: 1)
+                            .frame(width: cardSize.width / 5, height: cardSize.height / 10)
+                        Color.white.frame(width: 30, height: 1)
                     }
                     if let image = vm.model.club {
                         Image(uiImage: image)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 30, height: 30)
+                            .frame(width: cardSize.width / 5, height: cardSize.height / 10)
                     }
                 }
                 if let image = vm.model.image {
                     Image(uiImage: image)
                         .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 100, height: 100)
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: cardSize.height / 3, height: cardSize.height / 3, alignment: .center)
                         .clipShape(Circle())
                         .offset(x: 10)
                 }
             }
-            Color.white.frame(width: 200, height: 1)
+            Color.white.frame(width: cardSize.width, height: 1)
         }
+        .padding(.top, 10)
     }
 }
 
@@ -72,7 +75,8 @@ extension FifaCardView {
             Color.white.frame(width: 120, height: 1)
             HStack {
                 VStack(alignment: .leading, spacing: 5) {
-                    ForEach(vm.skills.prefix(vm.skills.count / 2), id: \.self) { skill in
+                    ForEach(vm.skills.prefix(vm.skills.count / 2),
+                            id: \.self) { skill in
                         Text(skill)
                     }
                 }
@@ -83,15 +87,15 @@ extension FifaCardView {
                     }
                 }
             }
-            .padding(.bottom, 10)
         }
         .foregroundColor(.white)
+        .padding(.bottom, 5)
     }
 }
 
 struct FifaCardView_Previews: PreviewProvider {
     static var previews: some View {
-        FifaCardView(vm: FifaCardViewModel(model: Player(id: UUID(), name: "Paulo", nickName: "Snizhko", image: UIImage(named: "Ukraine")!, country: UIImage(named: "Ukraine")!, playerPosition: .forward)))
+        FifaCardView(vm: FifaCardViewModel(model: Player(id: UUID(), name: "Paulo", nickName: "Snizhko", image: UIImage(named: "Ukraine")!, country: UIImage(named: "Ukraine")!, playerPosition: .forward)), cardSize: CGSize(width: 200, height: 260))
     }
 }
 

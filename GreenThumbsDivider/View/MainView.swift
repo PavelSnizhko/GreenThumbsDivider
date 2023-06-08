@@ -26,8 +26,8 @@ struct MainView: View {
                 .ignoresSafeArea()
                 GeometryReader { geo in
                     VStack(spacing: 0) {
-                        Tabs(tabs: tabs, geoWidth: geo.size.width, selectedTab: $selectedTab)
-                            .padding([.top, .bottom], 20)
+                        Tabs(tabs: tabs, geoWidth: geo.size.width - 32, selectedTab: $selectedTab)
+                            .padding([.top, .bottom, .leading, .trailing], 16)
                         TabView(selection: $selectedTab) {
                             SplitTeamView()
                                 .tag(0)

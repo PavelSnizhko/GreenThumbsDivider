@@ -71,8 +71,8 @@ struct TeamsView: View {
         return ForEach(teams.sorted(by: { $0.key < $1.key }), id: \.key) { key, players in
             VStack(spacing: 40) {
                 ScalePageView(players) { player in
-                    FifaCardView(vm: FifaCardViewModel(model: player))
-                        .frame(height: 300)
+//                    FifaCardView(vm: FifaCardViewModel(model: player), )
+//                        .frame(height: 300)
                 }.options(options)
                     .pagePadding(vertical: .absolute(20),
                                  horizontal: .absolute(80))
