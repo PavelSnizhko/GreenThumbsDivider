@@ -10,59 +10,39 @@ import CollectionViewPagingLayout
 
 struct TeamsView: View {
     private var vm: TeamsViewModel
+    private let isSmallHeightSize =  UIScreen.main.bounds.height <= DeviceScreenSize.iPhone8.screenHeight
     
     @State private var showSettings = false
+    @State private var showingBottomSheet = false
     
     init(vm: TeamsViewModel) {
         self.vm = vm
     }
     
     var body: some View {
-            VStack(spacing: 20) {
-                teamViews()
-                NavigationLink(destination:  GameView(), label: {
-                    Text("Play")
-                })
-                .buttonStyle(MainButtonStyle(color: .red, textColor: .white))
-                .frame(width: 200, height: 50)
-                .background(.red)
-                .foregroundColor(.white)
-                .clipShape(RoundedRectangle(cornerRadius: 10.0))
-                Spacer()
-            }
-            .background(
-                LinearGradient(gradient: Gradient(colors: [.purple, .cyan, .yellow]), startPoint: .top, endPoint: .bottom)
-            )
-            .frame(maxHeight: .infinity)
-            .toolbar {
-                //            ToolbarItem(placement: .principal) {
-                //                Text("Game")
-                //                    .font(.system(size: 20, weight: .bold, design: .default))
-                //            }
-                
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        withAnimation {
-                            //                            vm.showStats.toggle()
-                        }
-                    } label: {
-                        Image(systemName: "chart.bar")
-                    }
-                    .foregroundColor(.green)
-                    
-                }
-                
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        showSettings.toggle()
-                    } label: {
-                        Image(systemName: "gearshape.fill")
-                    }
-                    .foregroundColor(.green)
-                }
-            }
-            .navigationBarBackButtonHidden(true)
+        VStack(spacing: 20) {
+            teamViews()
+            NavigationLink(destination:  GameView(), label: {
+                Text("Play")
+            })
+            .buttonStyle(MainButtonStyle(color: .red, textColor: .white))
+            .frame(width: 200, height: 50)
+            .background(.red)
+            .foregroundColor(.white)
+            .clipShape(RoundedRectangle(cornerRadius: 10.0))
+            Spacer()
+        }
+        .background(
+            LinearGradient(gradient: Gradient(colors: [.purple, .cyan, .yellow]), startPoint: .top, endPoint: .bottom)
+        )
+        .frame(maxHeight: .infinity)
+        .sheet(isPresented: $showingBottomSheet, content: {
+            TeamsViewBottomSheet(isPresented: $showingBottomSheet)
+                .presentationDetents([.medium, .large])
+                .presentationDragIndicator(.visible)
+        })
     }
+    
     
     func teamViews() -> some View {
         let options: ScaleTransformViewOptions = .layout(.linear)
@@ -71,8 +51,11 @@ struct TeamsView: View {
         return ForEach(teams.sorted(by: { $0.key < $1.key }), id: \.key) { key, players in
             VStack(spacing: 40) {
                 ScalePageView(players) { player in
-//                    FifaCardView(vm: FifaCardViewModel(model: player), )
-//                        .frame(height: 300)
+                    if isSmallHeightSize {
+                        FifaCardView(vm: FifaCardViewModel(model: player), cardSize: CGSize(width: 200, height: 260))
+                    } else {
+                        FifaCardView(vm: FifaCardViewModel(model: player), cardSize: CGSize(width: 200, height: 300))
+                    }
                 }.options(options)
                     .pagePadding(vertical: .absolute(20),
                                  horizontal: .absolute(80))

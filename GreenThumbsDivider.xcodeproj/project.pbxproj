@@ -32,6 +32,7 @@
 		E878EA6B2A08AE27000A14D2 /* LineDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E878EA6A2A08AE27000A14D2 /* LineDivider.swift */; };
 		E878EA6D2A08DF01000A14D2 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E878EA6C2A08DF01000A14D2 /* Launch Screen.storyboard */; };
 		E878EA8F2A0952BF000A14D2 /* ImagePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E878EA8E2A0952BF000A14D2 /* ImagePickerViewModel.swift */; };
+		E8A129C52A345AFD00F3D844 /* TeamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A129C42A345AFC00F3D844 /* TeamManager.swift */; };
 		E8C21F2229E4257B00369E39 /* GreenThumbsDividerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F2129E4257B00369E39 /* GreenThumbsDividerApp.swift */; };
 		E8C21F2429E4257B00369E39 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F2329E4257B00369E39 /* ContentView.swift */; };
 		E8C21F2629E4257E00369E39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8C21F2529E4257E00369E39 /* Assets.xcassets */; };
@@ -58,6 +59,7 @@
 		E8E212C42A31CEE0005F8067 /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E212C32A31CEE0005F8067 /* TeamView.swift */; };
 		E8E212C62A31CF16005F8067 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E212C52A31CF16005F8067 /* StatisticsView.swift */; };
 		E8E212C82A321873005F8067 /* DeviceScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E212C72A321873005F8067 /* DeviceScreenSize.swift */; };
+		E8E212CB2A3315A9005F8067 /* TeamsViewBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E212CA2A3315A9005F8067 /* TeamsViewBottomSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +87,7 @@
 		E878EA6A2A08AE27000A14D2 /* LineDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineDivider.swift; sourceTree = "<group>"; };
 		E878EA6C2A08DF01000A14D2 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		E878EA8E2A0952BF000A14D2 /* ImagePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerViewModel.swift; sourceTree = "<group>"; };
+		E8A129C42A345AFC00F3D844 /* TeamManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamManager.swift; sourceTree = "<group>"; };
 		E8C21F1E29E4257B00369E39 /* GreenThumbsDivider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GreenThumbsDivider.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8C21F2129E4257B00369E39 /* GreenThumbsDividerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenThumbsDividerApp.swift; sourceTree = "<group>"; };
 		E8C21F2329E4257B00369E39 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -111,6 +114,7 @@
 		E8E212C32A31CEE0005F8067 /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
 		E8E212C52A31CF16005F8067 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		E8E212C72A321873005F8067 /* DeviceScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceScreenSize.swift; sourceTree = "<group>"; };
+		E8E212CA2A3315A9005F8067 /* TeamsViewBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsViewBottomSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,7 +209,7 @@
 			children = (
 				E8E212C22A31CECB005F8067 /* TabViews */,
 				E827DF9E2A1527A800AA107B /* GameScore */,
-				E84D05A529F681E900DAA721 /* TeamsView.swift */,
+				E8E212C92A33158A005F8067 /* Teams */,
 				E8DC48462A03B55100F7D9B5 /* FifaCardView.swift */,
 				E8C5B3222A04E4ED008A42DA /* CountryPickerView .swift */,
 				E8C5B33E2A050F89008A42DA /* SkillsSliderView.swift */,
@@ -237,6 +241,7 @@
 		E8C21F2029E4257B00369E39 /* GreenThumbsDivider */ = {
 			isa = PBXGroup;
 			children = (
+				E8E212D42A337DCC005F8067 /* New Group */,
 				E8DC48432A02A1F800F7D9B5 /* Common */,
 				E84D05DE29FA929500DAA721 /* View */,
 				E84D05DB29FA921000DAA721 /* ViewModel */,
@@ -292,6 +297,23 @@
 				E8E212C52A31CF16005F8067 /* StatisticsView.swift */,
 			);
 			path = TabViews;
+			sourceTree = "<group>";
+		};
+		E8E212C92A33158A005F8067 /* Teams */ = {
+			isa = PBXGroup;
+			children = (
+				E84D05A529F681E900DAA721 /* TeamsView.swift */,
+				E8E212CA2A3315A9005F8067 /* TeamsViewBottomSheet.swift */,
+				E8A129C42A345AFC00F3D844 /* TeamManager.swift */,
+			);
+			path = Teams;
+			sourceTree = "<group>";
+		};
+		E8E212D42A337DCC005F8067 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -387,6 +409,7 @@
 				E827DF9D2A1520EC00AA107B /* MainButtonStyle.swift in Sources */,
 				E8E212C42A31CEE0005F8067 /* TeamView.swift in Sources */,
 				E84D05A829F6C7B400DAA721 /* FileManager+DocumentsDirectory.swift in Sources */,
+				E8A129C52A345AFD00F3D844 /* TeamManager.swift in Sources */,
 				E84D05D529F964D500DAA721 /* ImagePicker.swift in Sources */,
 				E827DF992A151A7900AA107B /* TimerViewModel.swift in Sources */,
 				E827DF952A15010100AA107B /* StartButtonStyle.swift in Sources */,
@@ -404,6 +427,7 @@
 				E8C21F3D29E54B9F00369E39 /* CarouselView.swift in Sources */,
 				E8C21F3B29E54B8000369E39 /* PlayerViewModel.swift in Sources */,
 				E878EA6B2A08AE27000A14D2 /* LineDivider.swift in Sources */,
+				E8E212CB2A3315A9005F8067 /* TeamsViewBottomSheet.swift in Sources */,
 				E878EA8F2A0952BF000A14D2 /* ImagePickerViewModel.swift in Sources */,
 				E8C21F2E29E4257E00369E39 /* GreenThumbsDivider.xcdatamodeld in Sources */,
 				E84D05A429F6671000DAA721 /* PentagonView.swift in Sources */,
