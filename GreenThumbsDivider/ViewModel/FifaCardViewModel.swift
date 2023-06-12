@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FifaCardViewModel {
-    let model: Player
+    let model: PlayerModel
     
     var nickname: String {
         "\(model.name.prefix(1).uppercased()). \(model.nickName.uppercased())"

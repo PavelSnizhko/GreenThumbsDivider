@@ -16,17 +16,17 @@ class TeamsViewBottomSheetViewModel: ObservableObject {
     
     private lazy var manager: TeamManagement = TeamManager(context: managedObjectContext)
     
-    let firstTeamMembers: [Member]
-    let secondTeamMembers: [Member]
+    let firstTeamMembers: [Player]
+    let secondTeamMembers: [Player]
     
-    init(firstTeamMembers: [Member], secondTeamMembers: [Member]) {
+    init(firstTeamMembers: [Player], secondTeamMembers: [Player]) {
         self.firstTeamMembers = firstTeamMembers
         self.secondTeamMembers = secondTeamMembers
     }
     
     func saveTeams() {
-        manager.createTeam(teamName: firstTeamName, members: firstTeamMembers)
-        manager.createTeam(teamName: secondTeamName, members: secondTeamMembers)
+        manager.createTeam(teamName: firstTeamName, players: firstTeamMembers)
+        manager.createTeam(teamName: secondTeamName, players: secondTeamMembers)
     }
 
 }

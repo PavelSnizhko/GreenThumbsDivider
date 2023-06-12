@@ -71,9 +71,9 @@ struct TeamsView: View {
 
 struct TeamsView_Previews: PreviewProvider {
     static var previews: some View {
-        TeamsView(vm: TeamsViewModel(members: [Player(id: UUID(), name: "Paulo", nickName: "Snizhko", image: UIImage(named: "test_1"), country: UIImage(named: "Ukraine")!, playerPosition: .centerBack),
-                                               Player(id: UUID(), name: "Dmytro", nickName: "Snizhko", image: UIImage(named: "test_1"), country: UIImage(named: "Ukraine")!, playerPosition: .centerBack),
-                                               Player(id: UUID(), name: "Sashko", nickName: "Snizhko", image: UIImage(named: "test_1"), country: UIImage(named: "Ukraine")!, playerPosition: .centerBack)], teamCount: 2, goalkeeperCount: 1))
+        TeamsView(vm: TeamsViewModel(members: [PlayerModel(id: UUID(), name: "Paulo", nickName: "Snizhko", image: UIImage(named: "test_1"), country: UIImage(named: "Ukraine")!, playerPosition: .centerBack),
+                                               PlayerModel(id: UUID(), name: "Dmytro", nickName: "Snizhko", image: UIImage(named: "test_1"), country: UIImage(named: "Ukraine")!, playerPosition: .centerBack),
+                                               PlayerModel(id: UUID(), name: "Sashko", nickName: "Snizhko", image: UIImage(named: "test_1"), country: UIImage(named: "Ukraine")!, playerPosition: .centerBack)], teamCount: 2, goalkeeperCount: 1))
         //                                               Player(id: UUID(), name: "Dmytro", nickName: "Snizhko", image: UIImage(named: "test_1"), country: UIImage(named: "Ukraine")!, playerPosition: .centerBack),
         //                                               Player(id: UUID(), name: "Paulo", nickName: "Snizhko", image: UIImage(named: "test_1"), country: UIImage(named: "Ukraine")!, playerPosition: .centerBack)))
     }

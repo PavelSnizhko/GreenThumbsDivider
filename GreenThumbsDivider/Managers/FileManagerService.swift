@@ -13,7 +13,7 @@ final class FileManagerService {
     
     static let shared = FileManagerService()
     
-    func save(members: [Player]) {
+    func save(members: [PlayerModel]) {
         do {
             let data = try JSONEncoder().encode(members)
             let url = FileManager.documentsDirectory.appendingPathComponent(Constants.fileName)
@@ -23,11 +23,11 @@ final class FileManagerService {
         }
     }
     
-    func loadMembers() -> [Player] {
+    func loadMembers() -> [PlayerModel] {
         let url = FileManager.documentsDirectory.appendingPathComponent(Constants.fileName)
         do {
             let data = try Data(contentsOf: url)
-            let members = try JSONDecoder().decode([Player].self, from: data)
+            let members = try JSONDecoder().decode([PlayerModel].self, from: data)
             return members
         } catch {
             print("Failed to load members: \(error)")
@@ -35,7 +35,7 @@ final class FileManagerService {
         }
     }
     
-    func add(member: Player) {
+    func add(member: PlayerModel) {
         var members = loadMembers()
         members.append(member)
         save(members: members)

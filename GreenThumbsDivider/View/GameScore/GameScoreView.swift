@@ -11,8 +11,8 @@ typealias TeamInfo = (title: String, emblem: UIImage)
 
 struct Game {
     var teamInfo: [TeamInfo]
-    var firstTeamPlayers: [Player]
-    var secondTeamPlayers: [Player]
+    var firstTeamPlayers: [PlayerModel]
+    var secondTeamPlayers: [PlayerModel]
 }
 
 struct GameResult {

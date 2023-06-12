@@ -95,7 +95,7 @@ extension FifaCardView {
 
 struct FifaCardView_Previews: PreviewProvider {
     static var previews: some View {
-        FifaCardView(vm: FifaCardViewModel(model: Player(id: UUID(), name: "Paulo", nickName: "Snizhko", image: UIImage(named: "Ukraine")!, country: UIImage(named: "Ukraine")!, playerPosition: .forward)), cardSize: CGSize(width: 200, height: 260))
+        FifaCardView(vm: FifaCardViewModel(model: PlayerModel(id: UUID(), name: "Paulo", nickName: "Snizhko", image: UIImage(named: "Ukraine")!, country: UIImage(named: "Ukraine")!, playerPosition: .forward)), cardSize: CGSize(width: 200, height: 260))
     }
 }
 

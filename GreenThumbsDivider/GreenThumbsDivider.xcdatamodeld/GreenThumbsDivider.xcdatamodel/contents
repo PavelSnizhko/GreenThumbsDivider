@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22E252" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
+    <entity name="Item" representedClassName=".Item" syncable="YES">
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
-    <entity name="Member" representedClassName="Member" syncable="YES" codeGenerationType="class">
+    <entity name="Member" representedClassName=".Member" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="surname" optional="YES" attributeType="String"/>
         <attribute name="talent" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
-    <entity name="Team" representedClassName="Team" syncable="YES" codeGenerationType="class">
+    <entity name="Player" representedClassName=".Player" syncable="YES">
+        <attribute name="clubIcon" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="countryIcon" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="firstName" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="isGoalkeeper" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="lastName" attributeType="String"/>
+        <attribute name="positionString" optional="YES" attributeType="String"/>
+        <relationship name="skills" optional="YES" toMany="YES" minCount="6" maxCount="6" deletionRule="Nullify" destinationEntity="SkillsModel"/>
+    </entity>
+    <entity name="SkillsModel" representedClassName=".SkillsModel" syncable="YES">
+        <attribute name="skillsData" optional="YES" attributeType="Binary"/>
+    </entity>
+    <entity name="Team" representedClassName=".Team" syncable="YES">
         <attribute name="icon" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="relationship" optional="YES" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="Member"/>
+        <relationship name="players" optional="YES" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="Player"/>
     </entity>
 </model>

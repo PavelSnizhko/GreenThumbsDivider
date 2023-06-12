@@ -15,7 +15,7 @@ struct BottomSheetView: View {
     @StateObject var skillsVieModel = SkillsViewModel()
     @Binding var isPresented: Bool
     
-    var result: (Player?) -> Void
+    var result: (PlayerModel?) -> Void
 
     var body: some View {
         ScrollView {

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Player: Identifiable, Hashable {
+struct PlayerModel: Identifiable, Hashable {
     let id: UUID
     let name: String
     let nickName: String
@@ -19,13 +19,13 @@ struct Player: Identifiable, Hashable {
     var playerPosition: Position
 }
 
-extension Player: Equatable {
-    static func == (lhs: Player, rhs: Player) -> Bool {
+extension PlayerModel: Equatable {
+    static func == (lhs: PlayerModel, rhs: PlayerModel) -> Bool {
         lhs.id == rhs.id && lhs.name == rhs.name && lhs.nickName == rhs.nickName
     }
 }
 
-extension Player: Codable {
+extension PlayerModel: Codable {
     
     enum CodingKeys: String, CodingKey {
         case id

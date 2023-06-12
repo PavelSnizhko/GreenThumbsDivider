@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-typealias Teams = [Int: [Player]]
+typealias Teams = [Int: [PlayerModel]]
 
 final class TeamsViewModel {
-    var members: [Player]
+    var members: [PlayerModel]
     let teamCount: Int
     let goalkeeperCount: Int
     
@@ -18,14 +18,14 @@ final class TeamsViewModel {
         self.assignMembersToTeams()
     }()
     
-    init(members: [Player], teamCount: Int, goalkeeperCount: Int) {
+    init(members: [PlayerModel], teamCount: Int, goalkeeperCount: Int) {
         self.members = members
         self.teamCount = teamCount
         self.goalkeeperCount = goalkeeperCount
     }
     
-    private func selectGoalkeepers() -> [Player] {
-        var goalkeeprs: [Player] = []
+    private func selectGoalkeepers() -> [PlayerModel] {
+        var goalkeeprs: [PlayerModel] = []
         guard goalkeeperCount > 0,
               goalkeeperCount <= teamCount,
               !members.isEmpty else {
@@ -43,10 +43,10 @@ final class TeamsViewModel {
         return goalkeeprs
     }
     
-    func assignMembersToTeams() -> [Int: [Player]] {
+    func assignMembersToTeams() -> [Int: [PlayerModel]] {
         var goalkeepers = selectGoalkeepers()
         
-        var teams = [Int: [Player]]()
+        var teams = [Int: [PlayerModel]]()
         let totalMembers = members.count
         let membersPerTeam = totalMembers / teamCount
         var extraMembers = totalMembers % teamCount
@@ -55,7 +55,7 @@ final class TeamsViewModel {
         
         // Assign members to each team
         for i in 0..<teamCount {
-            var membersForTeam = [Player]()
+            var membersForTeam = [PlayerModel]()
             
             // Add the standard number of members per team
             for _ in 0..<membersPerTeam {

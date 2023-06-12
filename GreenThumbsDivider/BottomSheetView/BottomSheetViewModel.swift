@@ -41,15 +41,15 @@ class BottomSheetViewModel: ObservableObject {
         !name.isEmpty && !surname.isEmpty
     }
         
-    var member: Player? {
+    var member: PlayerModel? {
         guard let contryImage, let club else {
             return nil
         }
         
-        return Player(id: UUID(),
+        return PlayerModel(id: UUID(),
                       name: name,
                       nickName: surname,
-                      image: image ?? UIImage(named: "default_image"),
+                      image: image?.fixOrientation() ?? UIImage(named: "default_image"),
                       club: club,
                       country: contryImage,
                       skills: skills,

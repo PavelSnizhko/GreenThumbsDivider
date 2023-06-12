@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
+    @Environment(\.managedObjectContext) var managedObjectContext
     
     @State private var selectedTab: Int = 0
     
@@ -29,7 +30,7 @@ struct MainView: View {
                         Tabs(tabs: tabs, geoWidth: geo.size.width - 32, selectedTab: $selectedTab)
                             .padding([.top, .bottom, .leading, .trailing], 16)
                         TabView(selection: $selectedTab) {
-                            SplitTeamView()
+                            SplitTeamView(managedObjectContext)
                                 .tag(0)
                             TeamView()
                                 .tag(1)

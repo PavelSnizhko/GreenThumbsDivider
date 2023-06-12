@@ -9,7 +9,7 @@ import CoreData
 import Foundation
 
 protocol TeamManagement {
-    func createTeam(teamName: String, members: [Member])
+    func createTeam(teamName: String, players: [Player])
     func fetchTeams() -> [Team]
     func deleteTeam(team: Team)
     func deleteAllTeams()
@@ -22,11 +22,12 @@ final class TeamManager: TeamManagement {
         self.managedObjectContext = context
     }
     
-    func createTeam(teamName: String, members: [Member]) {
+    func createTeam(teamName: String, players: [Player]) {
         let team = Team(context: managedObjectContext)
         team.name = teamName
         // Assuming Member is another Core Data entity related to Team, you would need to handle the relationship appropriately
-        team.relationship = NSSet(array: members) // Assuming the relationship is a to-many relationship
+        team.players = NSSet(array: players)
+//        team.relationship = NSSet(array: members) // Assuming the relationship is a to-many relationship
         
         do {
             try managedObjectContext.save()

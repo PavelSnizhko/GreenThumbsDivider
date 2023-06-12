@@ -6,11 +6,19 @@
 //
 
 import SwiftUI
+import CoreData
 import PhotosUI
 import CollectionViewPagingLayout
 
 struct SplitTeamView: View {
-    @StateObject private var playerViewModel = PlayerViewModel()
+           
+   @StateObject private var playerViewModel: PlayerViewModel
+   
+    init(_ managedObjectContext: NSManagedObjectContext) {
+       let viewModel = PlayerViewModel(context: managedObjectContext)
+       _playerViewModel = StateObject(wrappedValue: viewModel)
+   }
+    
     @State var showingBottomSheet = false
     @State var sheetSize: PresentationDetent = .large
     
@@ -161,7 +169,7 @@ extension SplitTeamView {
                             .presentationDragIndicator(.visible)
         })
         .onAppear {
-            playerViewModel.fetchImages()
+            playerViewModel.fetchPlayers()
         }
     }
 }
@@ -180,6 +188,6 @@ private extension SplitTeamView {
 
 struct SplitTeamView_Previews: PreviewProvider {
     static var previews: some View {
-        SplitTeamView()
+        SplitTeamView(PersistenceController.preview.container.viewContext)
     }
 }
