@@ -6,11 +6,11 @@
 //
 
 import CoreData
-import Foundation
+import UIKit
 
 protocol TeamManagement {
     func createTeam(teamName: String, players: [Player])
-    func fetchTeams() -> [Team]
+    func fetchTeams() -> [TeamModel]
     func deleteTeam(team: Team)
     func deleteAllTeams()
 }
@@ -25,9 +25,7 @@ final class TeamManager: TeamManagement {
     func createTeam(teamName: String, players: [Player]) {
         let team = Team(context: managedObjectContext)
         team.name = teamName
-        // Assuming Member is another Core Data entity related to Team, you would need to handle the relationship appropriately
         team.players = NSSet(array: players)
-//        team.relationship = NSSet(array: members) // Assuming the relationship is a to-many relationship
         
         do {
             try managedObjectContext.save()
@@ -37,12 +35,16 @@ final class TeamManager: TeamManagement {
         }
     }
     
-    func fetchTeams() -> [Team] {
+    func fetchTeams() -> [TeamModel] {
         let fetchRequest: NSFetchRequest<Team> = Team.fetchRequest()
         
         do {
             let teams = try managedObjectContext.fetch(fetchRequest)
-            return teams
+            let teamModels = teams.map { team in
+                TeamModel(id: UUID(), name: team.name ?? "", icon: UIImage(named: "Barcelona")!, players: team.playerModels)
+            }
+            
+            return teamModels
         } catch {
             // Handle the error gracefully
             print("Failed to fetch teams: \(error)")

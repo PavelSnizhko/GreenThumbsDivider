@@ -65,6 +65,35 @@ extension Player {
             }
         }
     }
+    
+    class func findOrCreate(_ player: PlayerModel, context: NSManagedObjectContext) throws -> Player {
+        let request: NSFetchRequest<Player> = Player.fetchRequest()
+        request.predicate = NSPredicate(format: "id == %@", player.id as CVarArg)
+        
+        do {
+            let fetchResult = try context.fetch(request)
+            if fetchResult.count > 0 {
+                assert(fetchResult.count == 1, "Duplicate has been found in DB!!")
+                
+                return fetchResult[0]
+            }
+        } catch {
+            throw error
+        }
+        
+        let playerEntity = Player(context: context)
+        playerEntity.id = player.id
+        playerEntity.firstName = player.name
+        playerEntity.lastName = player.nickName
+        playerEntity.image = player.image?.jpegData(compressionQuality: 1)
+        playerEntity.countryIcon = player.country.jpegData(compressionQuality: 1)
+        playerEntity.clubIcon = player.club?.jpegData(compressionQuality: 1)
+        playerEntity.allSkills = player.skills
+        playerEntity.isGoalkeeper = player.isGoalkeeper
+        playerEntity.position = player.playerPosition
+        
+        return playerEntity
+    }
 
 }
 

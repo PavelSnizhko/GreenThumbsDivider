@@ -9,10 +9,14 @@ import SwiftUI
 
 typealias Teams = [Int: [PlayerModel]]
 
-final class TeamsViewModel {
+final class TeamsViewModel: ObservableObject {
     var members: [PlayerModel]
     let teamCount: Int
     let goalkeeperCount: Int
+    
+    var showTeamsStoringButtonDisabled: [Int: Bool] = [:]
+    
+    var selectedPlayers: [PlayerModel] = []
     
     lazy var teams: Teams = {
         self.assignMembersToTeams()
@@ -81,6 +85,8 @@ final class TeamsViewModel {
             var players = team.value
             players.append(goalkeepers.removeFirst())
             teams[team.key] = players
+            
+            showTeamsStoringButtonDisabled[team.key] = false
         }
         
         return teams

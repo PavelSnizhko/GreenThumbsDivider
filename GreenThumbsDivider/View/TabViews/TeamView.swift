@@ -6,8 +6,15 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct TeamView: View {
+    private let teamViewModel: TeamViewModel
+    
+    init(teamViewModel: TeamViewModel) {
+        self.teamViewModel = teamViewModel
+    }
+    
     var body: some View {
         ZStack {
             LinearGradient(
@@ -15,14 +22,47 @@ struct TeamView: View {
                 startPoint: .leading,
                 endPoint: .trailing
             )
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            .ignoresSafeArea()
+            List {
+                ForEach(teamViewModel.teams()) { team in
+                    VStack {
+                        Text(team.name)
+                        Image(uiImage: team.icon)
+                    }
+                }
+                .listStyle(DefaultListStyle())
+            }
+            .scrollContentBackground(.hidden)
         }
-        .ignoresSafeArea()
     }
 }
 
 struct TeamView_Previews: PreviewProvider {
     static var previews: some View {
-        TeamView()
+        TeamView(teamViewModel: TeamViewModel(managedObjectContext: PersistenceController.shared.container.viewContext))
+    }
+}
+
+//TODO: rename to Team but core data models rename to Entities
+struct TeamModel {
+    let id: UUID
+    let name: String
+    let icon: UIImage
+    let players: [PlayerModel]
+}
+
+extension TeamModel: Identifiable {
+    
+}
+
+class TeamViewModel: ObservableObject {
+    private let manager: TeamManagement
+    
+    init(managedObjectContext: NSManagedObjectContext) {
+        self.manager = TeamManager(context: managedObjectContext)
+    }
+    
+    func teams() -> [TeamModel] {
+        manager.fetchTeams()
     }
 }

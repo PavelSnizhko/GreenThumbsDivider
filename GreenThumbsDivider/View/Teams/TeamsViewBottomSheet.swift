@@ -9,32 +9,42 @@ import SwiftUI
 import CoreData
 
 class TeamsViewBottomSheetViewModel: ObservableObject {
-    @Environment(\.managedObjectContext) var managedObjectContext
+    @Published var teamName: String = ""
     
-    @State var firstTeamName: String = ""
-    @State var secondTeamName: String = ""
+    private let manager: TeamManagement
+    private let manageObjectContext: NSManagedObjectContext
     
-    private lazy var manager: TeamManagement = TeamManager(context: managedObjectContext)
+    var selectedPlayers: [PlayerModel] = []
     
-    let firstTeamMembers: [Player]
-    let secondTeamMembers: [Player]
+    let teamMembers: [PlayerModel]
     
-    init(firstTeamMembers: [Player], secondTeamMembers: [Player]) {
-        self.firstTeamMembers = firstTeamMembers
-        self.secondTeamMembers = secondTeamMembers
+    init(teamMembers: [PlayerModel], manageObjectContext: NSManagedObjectContext) {
+        self.teamMembers = teamMembers
+        self.manageObjectContext = manageObjectContext
+        self.manager = TeamManager(context: manageObjectContext)
     }
     
     func saveTeams() {
-        manager.createTeam(teamName: firstTeamName, players: firstTeamMembers)
-        manager.createTeam(teamName: secondTeamName, players: secondTeamMembers)
+        let players = teamMembers.compactMap { playerModel in
+            try? Player.findOrCreate(playerModel, context: manageObjectContext)
+        }
+        
+        manager.createTeam(teamName: teamName, players: players)
     }
 
 }
 
 struct TeamsViewBottomSheet: View {
     @Binding var isPresented: Bool
-    @StateObject var vm: TeamsViewBottomSheetViewModel = TeamsViewBottomSheetViewModel(firstTeamMembers: [], secondTeamMembers: [])
+    @StateObject var vm: TeamsViewBottomSheetViewModel
 
+
+    init(isPresented: Binding<Bool>,
+        vm: TeamsViewBottomSheetViewModel) {
+        self._isPresented = isPresented
+        self._vm = StateObject(wrappedValue: vm)
+    }
+    
     var body: some View {
         VStack(spacing: 20) {
             VStack {
@@ -42,25 +52,11 @@ struct TeamsViewBottomSheet: View {
                     .resizable()
                     .frame(width: 70, height: 70)
                     .padding(10)
-                TextField("First team name", text: $vm.firstTeamName)
+                TextField("Team name", text: $vm.teamName)
                     .font(.title2)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .frame(width: 250)
-            }
-            .padding(20)
-            .background(.green)
-            .cornerRadius(20)
-            .shadow(radius: 10)
-
-            VStack {
-                Image(systemName: "camera.circle.fill")
-                    .resizable()
-                    .frame(width: 70, height: 70)
-                    .padding(10)
-                TextField("Second team Name", text: $vm.secondTeamName)
-                    .font(.title2)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .frame(width: 250)
+                    .foregroundColor(.green)
                 
             }
             .padding(20)
@@ -70,9 +66,7 @@ struct TeamsViewBottomSheet: View {
             
             Button(action: {
                 vm.saveTeams()
-                // Perform an action with the entered team name
-                print("Entered first team name: \(vm.firstTeamName)")
-                print("Entered second team name: \(vm.secondTeamName)")
+                isPresented.toggle()
             }) {
                 Text("Submit")
                     .foregroundColor(.white)
@@ -88,6 +82,7 @@ struct TeamsViewBottomSheet: View {
 
 struct TeamsViewBottomSheet_Previews: PreviewProvider {
     static var previews: some View {
-        TeamsViewBottomSheet(isPresented: .constant(true))
+        TeamsViewBottomSheet(isPresented: .constant(true),
+                             vm: TeamsViewBottomSheetViewModel(teamMembers: [], manageObjectContext: PersistenceController.shared.container.viewContext))
     }
 }

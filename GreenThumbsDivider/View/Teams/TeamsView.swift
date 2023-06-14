@@ -9,14 +9,17 @@ import SwiftUI
 import CollectionViewPagingLayout
 
 struct TeamsView: View {
-    private var vm: TeamsViewModel
+    @Environment(\.managedObjectContext) var managedObjectContext
+
+    @StateObject private var vm: TeamsViewModel
     private let isSmallHeightSize =  UIScreen.main.bounds.height <= DeviceScreenSize.iPhone8.screenHeight
     
     @State private var showSettings = false
     @State private var showingBottomSheet = false
+    @State var buttonsDisabled: [Int: Bool] = [:]
     
     init(vm: TeamsViewModel) {
-        self.vm = vm
+        self._vm = StateObject(wrappedValue: vm)
     }
     
     var body: some View {
@@ -36,11 +39,11 @@ struct TeamsView: View {
             LinearGradient(gradient: Gradient(colors: [.purple, .cyan, .yellow]), startPoint: .top, endPoint: .bottom)
         )
         .frame(maxHeight: .infinity)
-        .sheet(isPresented: $showingBottomSheet, content: {
-            TeamsViewBottomSheet(isPresented: $showingBottomSheet)
-                .presentationDetents([.medium, .large])
-                .presentationDragIndicator(.visible)
-        })
+        .sheet(isPresented: $showingBottomSheet) {
+            TeamsViewBottomSheet(isPresented: $showingBottomSheet,
+                                 vm: TeamsViewBottomSheetViewModel(teamMembers: vm.selectedPlayers,
+                                                                   manageObjectContext: managedObjectContext))
+        }
     }
     
     
@@ -50,16 +53,31 @@ struct TeamsView: View {
         
         return ForEach(teams.sorted(by: { $0.key < $1.key }), id: \.key) { key, players in
             VStack(spacing: 40) {
-                ScalePageView(players) { player in
-                    if isSmallHeightSize {
-                        FifaCardView(vm: FifaCardViewModel(model: player), cardSize: CGSize(width: 200, height: 260))
-                    } else {
-                        FifaCardView(vm: FifaCardViewModel(model: player), cardSize: CGSize(width: 200, height: 300))
+                ZStack(alignment: .bottomTrailing) {
+                    ScalePageView(players) { player in
+                        if isSmallHeightSize {
+                            FifaCardView(vm: FifaCardViewModel(model: player), cardSize: CGSize(width: 200, height: 260))
+                        } else {
+                            FifaCardView(vm: FifaCardViewModel(model: player), cardSize: CGSize(width: 200, height: 300))
+                        }
+                    }.options(options)
+                        .pagePadding(vertical: .absolute(20),
+                                     horizontal: .absolute(80))
+                        .frame(height: 300)
+                    Button {
+                        showingBottomSheet = true
+                        vm.showTeamsStoringButtonDisabled[key] = true
+                        vm.selectedPlayers = players
+                        print("Save team: \(players)")
+                    } label: {
+                        Text("Save team")
+                            .frame(width: 100, height: 50)
+                            .background(Color.purple)
+                            .cornerRadius(20)
+                            .padding(.trailing, 10)
                     }
-                }.options(options)
-                    .pagePadding(vertical: .absolute(20),
-                                 horizontal: .absolute(80))
-                    .frame(height: 300)
+                    .disabled(vm.showTeamsStoringButtonDisabled[key] ?? false)
+                }
             }
             if key != teams.keys.count - 1 {
                 LineDivider(text: "VS", lineColor: .black)
@@ -68,6 +86,7 @@ struct TeamsView: View {
         }
     }
 }
+
 
 struct TeamsView_Previews: PreviewProvider {
     static var previews: some View {

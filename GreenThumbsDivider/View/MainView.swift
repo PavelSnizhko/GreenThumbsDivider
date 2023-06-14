@@ -32,7 +32,7 @@ struct MainView: View {
                         TabView(selection: $selectedTab) {
                             SplitTeamView(managedObjectContext)
                                 .tag(0)
-                            TeamView()
+                            TeamView(teamViewModel: TeamViewModel(managedObjectContext: managedObjectContext))
                                 .tag(1)
                             StatisticsView()
                                 .tag(2)
