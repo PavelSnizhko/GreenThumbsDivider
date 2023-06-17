@@ -10,12 +10,19 @@ import Foundation
 import CoreData
 
 
-extension Team {
+extension TeamEntity {
     
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Team> {
-        return NSFetchRequest<Team>(entityName: "Team")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<TeamEntity> {
+        return NSFetchRequest<TeamEntity>(entityName: "TeamEntity")
     }
     
+    public class func fetchRequest(withUUID id: UUID) -> NSFetchRequest<TeamEntity> {
+         let fetchTeam: NSFetchRequest<TeamEntity> = self.fetchRequest()
+         fetchTeam.predicate = NSPredicate(format: "%K == %@", "id", id as CVarArg)
+         return fetchTeam
+     }
+    
+    @NSManaged public var id: UUID?
     @NSManaged public var icon: Data?
     @NSManaged public var name: String?
     @NSManaged public var players: NSSet?
@@ -30,7 +37,7 @@ extension Team {
 }
 
 // MARK: Generated accessors for players
-extension Team {
+extension TeamEntity {
     
     @objc(addPlayersObject:)
     @NSManaged public func addToPlayers(_ value: Player)
@@ -46,6 +53,6 @@ extension Team {
     
 }
 
-extension Team : Identifiable {
+extension TeamEntity : Identifiable {
     
 }

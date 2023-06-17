@@ -10,6 +10,6 @@ import Foundation
 import CoreData
 
 
-public class Team: NSManagedObject {
+public class TeamEntity: NSManagedObject {
 
 }

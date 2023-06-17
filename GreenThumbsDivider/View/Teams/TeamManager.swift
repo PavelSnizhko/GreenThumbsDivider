@@ -12,7 +12,7 @@ import UIKit
 protocol TeamManagement {
     func createTeam(teamName: String, players: [Player])
     func fetchTeams() -> [TeamModel]
-    func deleteTeam(team: Team)
+    func deleteTeam(team: TeamEntity)
     func deleteAllTeams()
 }
 
@@ -21,12 +21,12 @@ final class TeamStorage: NSObject, ObservableObject {
     static let shared = TeamStorage()
     
     var teams = CurrentValueSubject<[TeamModel], Never>([])
-    private let teamFetchController: NSFetchedResultsController<Team>
+    private let teamFetchController: NSFetchedResultsController<TeamEntity>
     private let managedObjectContext = PersistenceController.shared.container.viewContext
     
     private override init() {
         let sortDescription = [NSSortDescriptor(key: "name", ascending: true)]
-        let featchRequest = Team.fetchRequest()
+        let featchRequest = TeamEntity.fetchRequest()
         featchRequest.sortDescriptors = sortDescription
         self.teamFetchController = NSFetchedResultsController(fetchRequest: featchRequest,
                                                               managedObjectContext: PersistenceController.shared.container.viewContext,
@@ -43,23 +43,18 @@ final class TeamStorage: NSObject, ObservableObject {
         }
     }
     
-    private func mapToTeamModels(from teamEntities: [Team]) -> [TeamModel] {
+    private func mapToTeamModels(from teamEntities: [TeamEntity]) -> [TeamModel] {
         teamEntities.map { teamEntity in
             TeamModel(id: UUID(), name: teamEntity.name ?? "", icon: UIImage(named: "Barcelona")!, players: teamEntity.playerModels)
         }
     }
     
     func createTeam(teamName: String, players: [Player]) {
-        let team = Team(context: teamFetchController.managedObjectContext)
+        let team = TeamEntity(context: teamFetchController.managedObjectContext)
+        team.id = UUID()
         team.name = teamName
         team.players = NSSet(array: players)
-    
-        do {
-            try managedObjectContext.save()
-        } catch {
-            // Handle the error gracefully
-            print("Failed to save team: \(error)")
-        }
+        saveContext()
     }
 
     func update() {
@@ -67,14 +62,33 @@ final class TeamStorage: NSObject, ObservableObject {
     }
 
     func delete(id: UUID) {
-        //TODO: make after changing core data models
+        let fetchRequest: NSFetchRequest<TeamEntity> = TeamEntity.fetchRequest(withUUID: id)
+        
+        do {
+            guard let team = try managedObjectContext.fetch(fetchRequest).first else {
+                return
+            }
+            managedObjectContext.delete(team)
+            saveContext()
+        } catch {
+            print("Failed to delete team: \(error)")
+        }        
+    }
+    
+    private func saveContext() {
+        do {
+            try managedObjectContext.save()
+        } catch {
+            // Handle the error gracefully
+            print("Failed to save team: \(error)")
+        }
     }
     
 }
 
 extension TeamStorage: NSFetchedResultsControllerDelegate {
     public func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        guard let teams = controller.fetchedObjects as? [Team] else { return }
+        guard let teams = controller.fetchedObjects as? [TeamEntity] else { return }
         print("Context has changed, reloading courses")
         let teamModels = teams.map { teamEntity in
             TeamModel(id: UUID(), name: teamEntity.name ?? "", icon: UIImage(named: "Barcelona")!, players: teamEntity.playerModels)

@@ -22,8 +22,9 @@
     <entity name="SkillsModel" representedClassName=".SkillsModel" syncable="YES">
         <attribute name="skillsData" optional="YES" attributeType="Binary"/>
     </entity>
-    <entity name="Team" representedClassName=".Team" syncable="YES">
+    <entity name="TeamEntity" representedClassName=".TeamEntity" syncable="YES">
         <attribute name="icon" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="players" optional="YES" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="Player"/>
     </entity>
