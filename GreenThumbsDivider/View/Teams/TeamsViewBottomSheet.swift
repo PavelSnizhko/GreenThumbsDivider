@@ -11,7 +11,7 @@ import CoreData
 class TeamsViewBottomSheetViewModel: ObservableObject {
     @Published var teamName: String = ""
     
-    private let manager: TeamManagement
+    private let manager: TeamStorage
     private let manageObjectContext: NSManagedObjectContext
     
     var selectedPlayers: [PlayerModel] = []
@@ -21,7 +21,7 @@ class TeamsViewBottomSheetViewModel: ObservableObject {
     init(teamMembers: [PlayerModel], manageObjectContext: NSManagedObjectContext) {
         self.teamMembers = teamMembers
         self.manageObjectContext = manageObjectContext
-        self.manager = TeamManager(context: manageObjectContext)
+        self.manager = TeamStorage.shared
     }
     
     func saveTeams() {

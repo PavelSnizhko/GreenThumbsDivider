@@ -7,12 +7,13 @@
 
 import SwiftUI
 import CoreData
+import Combine
 
 struct TeamView: View {
-    private let teamViewModel: TeamViewModel
+    @StateObject private var teamViewModel: TeamViewModel
     
     init(teamViewModel: TeamViewModel) {
-        self.teamViewModel = teamViewModel
+        self._teamViewModel = .init(wrappedValue: teamViewModel)
     }
     
     var body: some View {
@@ -24,7 +25,7 @@ struct TeamView: View {
             )
             .ignoresSafeArea()
             List {
-                ForEach(teamViewModel.teams()) { team in
+                ForEach(teamViewModel.teams) { team in
                     VStack {
                         Text(team.name)
                         Image(uiImage: team.icon)
@@ -56,13 +57,19 @@ extension TeamModel: Identifiable {
 }
 
 class TeamViewModel: ObservableObject {
-    private let manager: TeamManagement
+    private var cancellables: Set<AnyCancellable> = []
+    
+    private let manager: TeamStorage
+    
+    @Published var teams: [TeamModel] = []
+    private var cancellable: AnyCancellable?
     
     init(managedObjectContext: NSManagedObjectContext) {
-        self.manager = TeamManager(context: managedObjectContext)
-    }
-    
-    func teams() -> [TeamModel] {
-        manager.fetchTeams()
+        self.manager = TeamStorage.shared
+        cancellable = manager.teams
+            .eraseToAnyPublisher()
+            .sink(receiveValue: { [unowned self] teams in
+                self.teams = teams
+            })
     }
 }

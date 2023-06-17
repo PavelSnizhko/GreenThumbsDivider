@@ -6,6 +6,7 @@
 //
 
 import CoreData
+import Combine
 import UIKit
 
 protocol TeamManagement {
@@ -15,18 +16,44 @@ protocol TeamManagement {
     func deleteAllTeams()
 }
 
-final class TeamManager: TeamManagement {
-    let managedObjectContext: NSManagedObjectContext
+final class TeamStorage: NSObject, ObservableObject {
     
-    init(context: NSManagedObjectContext) {
-        self.managedObjectContext = context
+    static let shared = TeamStorage()
+    
+    var teams = CurrentValueSubject<[TeamModel], Never>([])
+    private let teamFetchController: NSFetchedResultsController<Team>
+    private let managedObjectContext = PersistenceController.shared.container.viewContext
+    
+    private override init() {
+        let sortDescription = [NSSortDescriptor(key: "name", ascending: true)]
+        let featchRequest = Team.fetchRequest()
+        featchRequest.sortDescriptors = sortDescription
+        self.teamFetchController = NSFetchedResultsController(fetchRequest: featchRequest,
+                                                              managedObjectContext: PersistenceController.shared.container.viewContext,
+                                                              sectionNameKeyPath: nil,
+                                                              cacheName: nil)
+        super.init()
+        
+        teamFetchController.delegate = self
+        do {
+            try teamFetchController.performFetch()
+            teams.value = mapToTeamModels(from: teamFetchController.fetchedObjects ?? [])
+        } catch {
+            NSLog("Error: could not fetch objects")
+        }
+    }
+    
+    private func mapToTeamModels(from teamEntities: [Team]) -> [TeamModel] {
+        teamEntities.map { teamEntity in
+            TeamModel(id: UUID(), name: teamEntity.name ?? "", icon: UIImage(named: "Barcelona")!, players: teamEntity.playerModels)
+        }
     }
     
     func createTeam(teamName: String, players: [Player]) {
-        let team = Team(context: managedObjectContext)
+        let team = Team(context: teamFetchController.managedObjectContext)
         team.name = teamName
         team.players = NSSet(array: players)
-        
+    
         do {
             try managedObjectContext.save()
         } catch {
@@ -34,45 +61,25 @@ final class TeamManager: TeamManagement {
             print("Failed to save team: \(error)")
         }
     }
-    
-    func fetchTeams() -> [TeamModel] {
-        let fetchRequest: NSFetchRequest<Team> = Team.fetchRequest()
-        
-        do {
-            let teams = try managedObjectContext.fetch(fetchRequest)
-            let teamModels = teams.map { team in
-                TeamModel(id: UUID(), name: team.name ?? "", icon: UIImage(named: "Barcelona")!, players: team.playerModels)
-            }
-            
-            return teamModels
-        } catch {
-            // Handle the error gracefully
-            print("Failed to fetch teams: \(error)")
-            return []
-        }
+
+    func update() {
+        // TODO: if it's needed then I'll add it
+    }
+
+    func delete(id: UUID) {
+        //TODO: make after changing core data models
     }
     
-    func deleteTeam(team: Team) {
-        managedObjectContext.delete(team)
-        
-        do {
-            try managedObjectContext.save()
-        } catch {
-            // Handle the error gracefully
-            print("Failed to delete team: \(error)")
+}
+
+extension TeamStorage: NSFetchedResultsControllerDelegate {
+    public func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        guard let teams = controller.fetchedObjects as? [Team] else { return }
+        print("Context has changed, reloading courses")
+        let teamModels = teams.map { teamEntity in
+            TeamModel(id: UUID(), name: teamEntity.name ?? "", icon: UIImage(named: "Barcelona")!, players: teamEntity.playerModels)
         }
-    }
-    
-    func deleteAllTeams() {
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Team.fetchRequest()
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         
-        do {
-            try managedObjectContext.execute(deleteRequest)
-            try managedObjectContext.save()
-        } catch {
-            // Handle the error gracefully
-            print("Failed to delete all teams: \(error)")
-        }
+        self.teams.value = teamModels
     }
 }
