@@ -12,8 +12,6 @@
 		E81CCD872A37161B00B6EF53 /* SkillsModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81CCD7D2A37161B00B6EF53 /* SkillsModel+CoreDataProperties.swift */; };
 		E81CCD882A37161B00B6EF53 /* Player+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81CCD7E2A37161B00B6EF53 /* Player+CoreDataClass.swift */; };
 		E81CCD892A37161B00B6EF53 /* Player+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81CCD7F2A37161B00B6EF53 /* Player+CoreDataProperties.swift */; };
-		E81CCD8A2A37161B00B6EF53 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81CCD802A37161B00B6EF53 /* Item+CoreDataClass.swift */; };
-		E81CCD8B2A37161B00B6EF53 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81CCD812A37161B00B6EF53 /* Item+CoreDataProperties.swift */; };
 		E81CCD8C2A37161B00B6EF53 /* Team+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81CCD822A37161B00B6EF53 /* Team+CoreDataClass.swift */; };
 		E81CCD8D2A37161B00B6EF53 /* Team+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81CCD832A37161B00B6EF53 /* Team+CoreDataProperties.swift */; };
 		E81CCD912A37175F00B6EF53 /* PlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81CCD902A37175F00B6EF53 /* PlayerManager.swift */; };
@@ -45,7 +43,6 @@
 		E878EA8F2A0952BF000A14D2 /* ImagePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E878EA8E2A0952BF000A14D2 /* ImagePickerViewModel.swift */; };
 		E8A129C52A345AFD00F3D844 /* TeamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A129C42A345AFC00F3D844 /* TeamManager.swift */; };
 		E8C21F2229E4257B00369E39 /* GreenThumbsDividerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F2129E4257B00369E39 /* GreenThumbsDividerApp.swift */; };
-		E8C21F2429E4257B00369E39 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F2329E4257B00369E39 /* ContentView.swift */; };
 		E8C21F2629E4257E00369E39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8C21F2529E4257E00369E39 /* Assets.xcassets */; };
 		E8C21F2929E4257E00369E39 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8C21F2829E4257E00369E39 /* Preview Assets.xcassets */; };
 		E8C21F2B29E4257E00369E39 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F2A29E4257E00369E39 /* Persistence.swift */; };
@@ -77,8 +74,6 @@
 		E81CCD7D2A37161B00B6EF53 /* SkillsModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SkillsModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E81CCD7E2A37161B00B6EF53 /* Player+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E81CCD7F2A37161B00B6EF53 /* Player+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		E81CCD802A37161B00B6EF53 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E81CCD812A37161B00B6EF53 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E81CCD822A37161B00B6EF53 /* Team+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Team+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E81CCD832A37161B00B6EF53 /* Team+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Team+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E81CCD902A37175F00B6EF53 /* PlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerManager.swift; sourceTree = "<group>"; };
@@ -108,9 +103,9 @@
 		E878EA6C2A08DF01000A14D2 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		E878EA8E2A0952BF000A14D2 /* ImagePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerViewModel.swift; sourceTree = "<group>"; };
 		E8A129C42A345AFC00F3D844 /* TeamManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamManager.swift; sourceTree = "<group>"; };
+		E8BDF38A2A3E6AE0002F934B /* GreenThumbsDivider 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "GreenThumbsDivider 2.xcdatamodel"; sourceTree = "<group>"; };
 		E8C21F1E29E4257B00369E39 /* GreenThumbsDivider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GreenThumbsDivider.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8C21F2129E4257B00369E39 /* GreenThumbsDividerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenThumbsDividerApp.swift; sourceTree = "<group>"; };
-		E8C21F2329E4257B00369E39 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E8C21F2529E4257E00369E39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E8C21F2829E4257E00369E39 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E8C21F2A29E4257E00369E39 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -270,7 +265,6 @@
 				E84D05AC29F90B7B00DAA721 /* BottomSheetView */,
 				E84D05A929F7ED2600DAA721 /* Managers */,
 				E8C21F2129E4257B00369E39 /* GreenThumbsDividerApp.swift */,
-				E8C21F2329E4257B00369E39 /* ContentView.swift */,
 				E8C21F2529E4257E00369E39 /* Assets.xcassets */,
 				E8C21F2A29E4257E00369E39 /* Persistence.swift */,
 				E8C21F2C29E4257E00369E39 /* GreenThumbsDivider.xcdatamodeld */,
@@ -337,8 +331,6 @@
 				E81CCD7D2A37161B00B6EF53 /* SkillsModel+CoreDataProperties.swift */,
 				E81CCD7E2A37161B00B6EF53 /* Player+CoreDataClass.swift */,
 				E81CCD7F2A37161B00B6EF53 /* Player+CoreDataProperties.swift */,
-				E81CCD802A37161B00B6EF53 /* Item+CoreDataClass.swift */,
-				E81CCD812A37161B00B6EF53 /* Item+CoreDataProperties.swift */,
 				E81CCD822A37161B00B6EF53 /* Team+CoreDataClass.swift */,
 				E81CCD832A37161B00B6EF53 /* Team+CoreDataProperties.swift */,
 				E81CCD902A37175F00B6EF53 /* PlayerManager.swift */,
@@ -432,7 +424,6 @@
 				E8DC484D2A03F04300F7D9B5 /* Skills.swift in Sources */,
 				E8C21F3729E446AC00369E39 /* SplitTeamView.swift in Sources */,
 				E8C21F3529E4386800369E39 /* GridStack.swift in Sources */,
-				E81CCD8A2A37161B00B6EF53 /* Item+CoreDataClass.swift in Sources */,
 				E81CCD8C2A37161B00B6EF53 /* Team+CoreDataClass.swift in Sources */,
 				E878EA672A060163000A14D2 /* TapeShape.swift in Sources */,
 				E81CCD8D2A37161B00B6EF53 /* Team+CoreDataProperties.swift in Sources */,
@@ -458,7 +449,6 @@
 				E827DF8E2A14E38E00AA107B /* GameView.swift in Sources */,
 				E84D05DA29F965F100DAA721 /* SourcePicker.swift in Sources */,
 				E81CCD932A37493B00B6EF53 /* UIImage + Orientation.swift in Sources */,
-				E8C21F2429E4257B00369E39 /* ContentView.swift in Sources */,
 				E81CCD892A37161B00B6EF53 /* Player+CoreDataProperties.swift in Sources */,
 				E8C21F3D29E54B9F00369E39 /* CarouselView.swift in Sources */,
 				E8C21F3B29E54B8000369E39 /* PlayerViewModel.swift in Sources */,
@@ -470,7 +460,6 @@
 				E84D05AE29F90B8D00DAA721 /* BottomSheetView.swift in Sources */,
 				E84D05A629F681E900DAA721 /* TeamsView.swift in Sources */,
 				E8E212C82A321873005F8067 /* DeviceScreenSize.swift in Sources */,
-				E81CCD8B2A37161B00B6EF53 /* Item+CoreDataProperties.swift in Sources */,
 				E81CCD862A37161B00B6EF53 /* SkillsModel+CoreDataClass.swift in Sources */,
 				E827DF972A15138D00AA107B /* CircularProgressView.swift in Sources */,
 				E8E212BF2A31A8C6005F8067 /* Tabs.swift in Sources */,
@@ -726,9 +715,10 @@
 		E8C21F2C29E4257E00369E39 /* GreenThumbsDivider.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				E8BDF38A2A3E6AE0002F934B /* GreenThumbsDivider 2.xcdatamodel */,
 				E8C21F2D29E4257E00369E39 /* GreenThumbsDivider.xcdatamodel */,
 			);
-			currentVersion = E8C21F2D29E4257E00369E39 /* GreenThumbsDivider.xcdatamodel */;
+			currentVersion = E8BDF38A2A3E6AE0002F934B /* GreenThumbsDivider 2.xcdatamodel */;
 			path = GreenThumbsDivider.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

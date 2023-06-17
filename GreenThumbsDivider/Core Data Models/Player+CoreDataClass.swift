@@ -10,6 +10,6 @@ import Foundation
 import CoreData
 
 
-public class Player: NSManagedObject {
+public class PlayerEntity: NSManagedObject {
 
 }

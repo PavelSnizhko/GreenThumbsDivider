@@ -10,7 +10,7 @@ import UIKit
 
 class PlayerManager: ObservableObject {
     private let context: NSManagedObjectContext
-    private var players: [Player] = []
+    private var players: [PlayerEntity] = []
     
     init(context: NSManagedObjectContext) {
         self.context = context
@@ -19,7 +19,7 @@ class PlayerManager: ObservableObject {
     
     func addPlayer(_ player: PlayerModel) {
         
-        let newPlayer = Player(context: context)
+        let newPlayer = PlayerEntity(context: context)
         newPlayer.id = player.id
         newPlayer.firstName = player.name
         newPlayer.lastName = player.nickName
@@ -42,7 +42,7 @@ class PlayerManager: ObservableObject {
                       countryIcon: UIImage?,
                       skills: [Skills]) {
         
-        let newPlayer = Player(context: context)
+        let newPlayer = PlayerEntity(context: context)
         newPlayer.id = UUID()
         newPlayer.firstName = firstName
         newPlayer.lastName = lastName
@@ -56,8 +56,8 @@ class PlayerManager: ObservableObject {
         saveContext()
     }
     
-    func fetchPlayers() -> [Player] {
-        let fetchRequest: NSFetchRequest<Player> = Player.fetchRequest()
+    func fetchPlayers() -> [PlayerEntity] {
+        let fetchRequest: NSFetchRequest<PlayerEntity> = PlayerEntity.fetchRequest()
         
         do {
             
@@ -70,7 +70,7 @@ class PlayerManager: ObservableObject {
         }
     }
     
-    func updatePlayer(_ player: Player,
+    func updatePlayer(_ player: PlayerEntity,
                       firstName: String,
                       lastName: String,
                       position: Position,
@@ -92,7 +92,7 @@ class PlayerManager: ObservableObject {
         saveContext()
     }
     
-    func deletePlayer(_ player: Player) {
+    func deletePlayer(_ player: PlayerEntity) {
         context.delete(player)
         
         saveContext()
@@ -118,7 +118,7 @@ class PlayerManager: ObservableObject {
     }
 }
 
-extension Player {
+extension PlayerEntity {
     func mapToModel() -> PlayerModel? {
         guard let id,
               let firstName,

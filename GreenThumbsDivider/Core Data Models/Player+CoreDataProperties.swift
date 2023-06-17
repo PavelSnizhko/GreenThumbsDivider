@@ -10,10 +10,10 @@ import Foundation
 import CoreData
 
 
-extension Player {
+extension PlayerEntity {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Player> {
-        return NSFetchRequest<Player>(entityName: "Player")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<PlayerEntity> {
+        return NSFetchRequest<PlayerEntity>(entityName: "PlayerEntity")
     }
 
     @NSManaged public var clubIcon: Data?
@@ -41,7 +41,7 @@ extension Player {
     
     var allSkills: [Skills] {
         get {
-            guard let skills = skills as? Set<SkillsModel> else {
+            guard let skills = skills as? Set<SkillsEntity> else {
                 return []
             }
             
@@ -54,7 +54,7 @@ extension Player {
             }
             
             let skills = newValue.map { skill in
-                let newSkill = SkillsModel(context: context)
+                let newSkill = SkillsEntity(context: context)
                 newSkill.skills = skill
                 
                 return newSkill
@@ -66,8 +66,8 @@ extension Player {
         }
     }
     
-    class func findOrCreate(_ player: PlayerModel, context: NSManagedObjectContext) throws -> Player {
-        let request: NSFetchRequest<Player> = Player.fetchRequest()
+    class func findOrCreate(_ player: PlayerModel, context: NSManagedObjectContext) throws -> PlayerEntity {
+        let request: NSFetchRequest<PlayerEntity> = PlayerEntity.fetchRequest()
         request.predicate = NSPredicate(format: "id == %@", player.id as CVarArg)
         
         do {
@@ -81,7 +81,7 @@ extension Player {
             throw error
         }
         
-        let playerEntity = Player(context: context)
+        let playerEntity = PlayerEntity(context: context)
         playerEntity.id = player.id
         playerEntity.firstName = player.name
         playerEntity.lastName = player.nickName
@@ -98,13 +98,13 @@ extension Player {
 }
 
 // MARK: Generated accessors for skills
-extension Player {
+extension PlayerEntity {
 
     @objc(addSkillsObject:)
-    @NSManaged public func addToSkills(_ value: SkillsModel)
+    @NSManaged public func addToSkills(_ value: SkillsEntity)
 
     @objc(removeSkillsObject:)
-    @NSManaged public func removeFromSkills(_ value: SkillsModel)
+    @NSManaged public func removeFromSkills(_ value: SkillsEntity)
 
     @objc(addSkills:)
     @NSManaged public func addToSkills(_ values: NSSet)
@@ -114,6 +114,6 @@ extension Player {
 
 }
 
-extension Player : Identifiable {
+extension PlayerEntity : Identifiable {
 
 }

@@ -26,7 +26,7 @@ class TeamsViewBottomSheetViewModel: ObservableObject {
     
     func saveTeams() {
         let players = teamMembers.compactMap { playerModel in
-            try? Player.findOrCreate(playerModel, context: manageObjectContext)
+            try? PlayerEntity.findOrCreate(playerModel, context: manageObjectContext)
         }
         
         manager.createTeam(teamName: teamName, players: players)

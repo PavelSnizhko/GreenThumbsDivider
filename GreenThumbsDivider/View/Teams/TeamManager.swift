@@ -10,7 +10,7 @@ import Combine
 import UIKit
 
 protocol TeamManagement {
-    func createTeam(teamName: String, players: [Player])
+    func createTeam(teamName: String, players: [PlayerEntity])
     func fetchTeams() -> [TeamModel]
     func deleteTeam(team: TeamEntity)
     func deleteAllTeams()
@@ -49,7 +49,7 @@ final class TeamStorage: NSObject, ObservableObject {
         }
     }
     
-    func createTeam(teamName: String, players: [Player]) {
+    func createTeam(teamName: String, players: [PlayerEntity]) {
         let team = TeamEntity(context: teamFetchController.managedObjectContext)
         team.id = UUID()
         team.name = teamName

@@ -10,6 +10,6 @@ import Foundation
 import CoreData
 
 
-public class SkillsModel: NSManagedObject {
+public class SkillsEntity: NSManagedObject {
 
 }

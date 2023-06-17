@@ -28,7 +28,7 @@ extension TeamEntity {
     @NSManaged public var players: NSSet?
     
     var playerModels: [PlayerModel] {
-        guard let players = players as? Set<Player> else {
+        guard let players = players as? Set<PlayerEntity> else {
             return []
         }
         
@@ -40,10 +40,10 @@ extension TeamEntity {
 extension TeamEntity {
     
     @objc(addPlayersObject:)
-    @NSManaged public func addToPlayers(_ value: Player)
+    @NSManaged public func addToPlayers(_ value: PlayerEntity)
     
     @objc(removePlayersObject:)
-    @NSManaged public func removeFromPlayers(_ value: Player)
+    @NSManaged public func removeFromPlayers(_ value: PlayerEntity)
     
     @objc(addPlayers:)
     @NSManaged public func addToPlayers(_ values: NSSet)

@@ -10,10 +10,10 @@ import Foundation
 import CoreData
 
 
-extension SkillsModel {
+extension SkillsEntity {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<SkillsModel> {
-        return NSFetchRequest<SkillsModel>(entityName: "SkillsModel")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<SkillsEntity> {
+        return NSFetchRequest<SkillsEntity>(entityName: "SkillsEntity")
     }
 
     @NSManaged public var skillsData: Data?
@@ -34,6 +34,6 @@ extension SkillsModel {
 
 }
 
-extension SkillsModel : Identifiable {
+extension SkillsEntity : Identifiable {
 
 }

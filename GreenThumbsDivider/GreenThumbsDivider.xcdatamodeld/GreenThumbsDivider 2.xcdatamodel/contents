@@ -14,7 +14,7 @@
     <entity name="SkillsEntity" representedClassName=".SkillsEntity" elementID="SkillsModel" syncable="YES">
         <attribute name="skillsData" optional="YES" attributeType="Binary"/>
     </entity>
-    <entity name="TeamEntity" representedClassName=".TeamEntity1" syncable="YES">
+    <entity name="TeamEntity" representedClassName=".TeamEntity" syncable="YES">
         <attribute name="icon" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
