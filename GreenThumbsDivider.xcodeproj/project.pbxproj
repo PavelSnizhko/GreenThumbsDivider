@@ -16,8 +16,6 @@
 		E81CCD8B2A37161B00B6EF53 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81CCD812A37161B00B6EF53 /* Item+CoreDataProperties.swift */; };
 		E81CCD8C2A37161B00B6EF53 /* Team+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81CCD822A37161B00B6EF53 /* Team+CoreDataClass.swift */; };
 		E81CCD8D2A37161B00B6EF53 /* Team+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81CCD832A37161B00B6EF53 /* Team+CoreDataProperties.swift */; };
-		E81CCD8E2A37161B00B6EF53 /* Member+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81CCD842A37161B00B6EF53 /* Member+CoreDataClass.swift */; };
-		E81CCD8F2A37161B00B6EF53 /* Member+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81CCD852A37161B00B6EF53 /* Member+CoreDataProperties.swift */; };
 		E81CCD912A37175F00B6EF53 /* PlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81CCD902A37175F00B6EF53 /* PlayerManager.swift */; };
 		E81CCD932A37493B00B6EF53 /* UIImage + Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81CCD922A37493B00B6EF53 /* UIImage + Orientation.swift */; };
 		E827DF8E2A14E38E00AA107B /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E827DF8D2A14E38E00AA107B /* GameView.swift */; };
@@ -83,8 +81,6 @@
 		E81CCD812A37161B00B6EF53 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E81CCD822A37161B00B6EF53 /* Team+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Team+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E81CCD832A37161B00B6EF53 /* Team+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Team+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		E81CCD842A37161B00B6EF53 /* Member+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Member+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E81CCD852A37161B00B6EF53 /* Member+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Member+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E81CCD902A37175F00B6EF53 /* PlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerManager.swift; sourceTree = "<group>"; };
 		E81CCD922A37493B00B6EF53 /* UIImage + Orientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Orientation.swift"; sourceTree = "<group>"; };
 		E827DF8D2A14E38E00AA107B /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
@@ -345,8 +341,6 @@
 				E81CCD812A37161B00B6EF53 /* Item+CoreDataProperties.swift */,
 				E81CCD822A37161B00B6EF53 /* Team+CoreDataClass.swift */,
 				E81CCD832A37161B00B6EF53 /* Team+CoreDataProperties.swift */,
-				E81CCD842A37161B00B6EF53 /* Member+CoreDataClass.swift */,
-				E81CCD852A37161B00B6EF53 /* Member+CoreDataProperties.swift */,
 				E81CCD902A37175F00B6EF53 /* PlayerManager.swift */,
 			);
 			path = "Core Data Models";
@@ -444,7 +438,6 @@
 				E81CCD8D2A37161B00B6EF53 /* Team+CoreDataProperties.swift in Sources */,
 				E878EA692A06130D000A14D2 /* Color+Hex.swift in Sources */,
 				E8C5B3232A04E4ED008A42DA /* CountryPickerView .swift in Sources */,
-				E81CCD8F2A37161B00B6EF53 /* Member+CoreDataProperties.swift in Sources */,
 				E8DC48472A03B55100F7D9B5 /* FifaCardView.swift in Sources */,
 				E827DF9D2A1520EC00AA107B /* MainButtonStyle.swift in Sources */,
 				E8E212C42A31CEE0005F8067 /* TeamView.swift in Sources */,
@@ -456,7 +449,6 @@
 				E8C21F2B29E4257E00369E39 /* Persistence.swift in Sources */,
 				E84D05A129F2804600DAA721 /* CloudShape.swift in Sources */,
 				E84D05DD29FA922300DAA721 /* TeamsViewModel.swift in Sources */,
-				E81CCD8E2A37161B00B6EF53 /* Member+CoreDataClass.swift in Sources */,
 				E8DC484B2A03EFFE00F7D9B5 /* SoccerPosition.swift in Sources */,
 				E84D05AB29F7ED4300DAA721 /* FileManagerService.swift in Sources */,
 				E827DFA02A15284400AA107B /* GameScoreView.swift in Sources */,
