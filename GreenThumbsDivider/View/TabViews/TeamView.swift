@@ -17,23 +17,26 @@ struct TeamView: View {
     }
     
     var body: some View {
-        ZStack {
-            LinearGradient(
-                gradient: Gradient(colors: [Color(hex: "004ff9"), Color(hex: "fff94c")]),
-                startPoint: .leading,
-                endPoint: .trailing
-            )
-            .ignoresSafeArea()
-            List {
-                ForEach(teamViewModel.teams) { team in
-                    VStack {
-                        Text(team.name)
-                        Image(uiImage: team.icon)
+        NavigationView {
+            ZStack {
+                LinearGradient(
+                    gradient: Gradient(colors: [Color(hex: "004ff9"), Color(hex: "fff94c")]),
+                    startPoint: .leading,
+                    endPoint: .trailing
+                )
+                .ignoresSafeArea()
+                List {
+                    ForEach(teamViewModel.teams) { team in
+                        VStack(alignment: .leading) {
+                            Image(uiImage: team.icon)
+                            Text(team.name)
+                        }
                     }
+                    .onDelete(perform: teamViewModel.delete)
+                    .listStyle(DefaultListStyle())
                 }
-                .listStyle(DefaultListStyle())
+                .scrollContentBackground(.hidden)
             }
-            .scrollContentBackground(.hidden)
         }
     }
 }
@@ -71,5 +74,12 @@ class TeamViewModel: ObservableObject {
             .sink(receiveValue: { [unowned self] teams in
                 self.teams = teams
             })
+    }
+    
+    func delete(at offsets: IndexSet) {
+        offsets.forEach { index in
+            let team = teams[index]
+            manager.delete(id: team.id)
+        }
     }
 }

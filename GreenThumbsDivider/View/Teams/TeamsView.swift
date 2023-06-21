@@ -14,7 +14,6 @@ struct TeamsView: View {
     @StateObject private var vm: TeamsViewModel
     private let isSmallHeightSize =  UIScreen.main.bounds.height <= DeviceScreenSize.iPhone8.screenHeight
     
-    @State private var showSettings = false
     @State private var showingBottomSheet = false
     @State var buttonsDisabled: [Int: Bool] = [:]
     
@@ -75,6 +74,7 @@ struct TeamsView: View {
                             .background(Color.purple)
                             .cornerRadius(20)
                             .padding(.trailing, 10)
+                            .foregroundColor(.white)
                     }
                     .disabled(vm.showTeamsStoringButtonDisabled[key] ?? false)
                 }

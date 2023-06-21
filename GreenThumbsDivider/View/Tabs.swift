@@ -66,7 +66,6 @@ struct Tabs: View {
         .frame(height: 55)
         .cornerRadius(50)
         .onAppear(perform: {
-            UIScrollView.appearance().backgroundColor = scrollViewColor
             UIScrollView.appearance().bounces = fixed ? false : true
         })
         .onDisappear(perform: {

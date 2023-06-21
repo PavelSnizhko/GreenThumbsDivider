@@ -11,13 +11,14 @@ import PhotosUI
 import CollectionViewPagingLayout
 
 struct SplitTeamView: View {
-           
-   @StateObject private var playerViewModel: PlayerViewModel
-   
-    init(_ managedObjectContext: NSManagedObjectContext) {
-       let viewModel = PlayerViewModel(context: managedObjectContext)
-       _playerViewModel = StateObject(wrappedValue: viewModel)
-   }
+    
+    @StateObject private var playerViewModel: PlayerViewModel
+    private let playFlow: (TeamsViewModel) -> Void
+    
+    init(playerViewModel: PlayerViewModel, playFlow: @escaping (TeamsViewModel) -> Void) {
+        _playerViewModel = StateObject(wrappedValue: playerViewModel)
+        self.playFlow = playFlow
+    }
     
     @State var showingBottomSheet = false
     @State var sheetSize: PresentationDetent = .large
@@ -25,28 +26,30 @@ struct SplitTeamView: View {
     private let isSmallHeightSize =  UIScreen.main.bounds.height <= DeviceScreenSize.iPhone8.screenHeight
     
     var body: some View {
-        ZStack {
-            LinearGradient(
-                gradient: Gradient(colors: [Color(hex: "004ff9"), Color(hex: "fff94c")]),
-                startPoint: .leading,
-                endPoint: .trailing
-            )
-            .ignoresSafeArea()
-            VStack(spacing: 10) {
-                dividerCard
-                membersSelectionView
-                    .frame(minHeight: 350)
-            }.onChange(of: playerViewModel.members, perform: { members in
-                playerViewModel.isAvailableSplitting(for: members)
-            })
-            .frame(
-                maxWidth: .infinity,
-                maxHeight: .infinity,
-                alignment: .topLeading
-            )
-            .padding(.init(top: 0, leading: 16, bottom: 0, trailing: 16))
+        NavigationView {
+            ZStack {
+                LinearGradient(
+                    gradient: Gradient(colors: [Color(hex: "004ff9"), Color(hex: "fff94c")]),
+                    startPoint: .leading,
+                    endPoint: .trailing
+                )
+                .ignoresSafeArea()
+                VStack(spacing: 10) {
+                    dividerCard
+                    membersSelectionView
+                        .frame(minHeight: 350)
+                }.onChange(of: playerViewModel.members, perform: { members in
+                    playerViewModel.isAvailableSplitting(for: members)
+                })
+                .frame(
+                    maxWidth: .infinity,
+                    maxHeight: .infinity,
+                    alignment: .topLeading
+                )
+                .padding(.init(top: 0, leading: 16, bottom: 0, trailing: 16))
+            }
+            .background(.clear)
         }
-        .background(.clear)
     }
 }
 
@@ -68,19 +71,15 @@ extension SplitTeamView {
             }
             .font(.system(size: isSmallHeightSize ? 18 : 22, weight: .bold, design: .monospaced))
             .lineLimit(1)
-            Button(action: { },
+            Button(action: { playFlow(TeamsViewModel(members: playerViewModel.members,
+                                                     teamCount: playerViewModel.teams,
+                                                     goalkeeperCount: playerViewModel.goalkeeper)) },
                    label: {
-                NavigationLink {
-                    TeamsView(vm: TeamsViewModel(members: playerViewModel.members,
-                                                 teamCount: playerViewModel.teams,
-                                                 goalkeeperCount: playerViewModel.goalkeeper))
-                } label: {
-                    Text("\(Constant.buttonActionTtite)")
-                        .frame(height: 50)
-                        .frame(maxWidth: .infinity)
-                        .background(Color(red: 124 / 255, green: 222 / 255, blue: 220 / 255))
-                        .cornerRadius(10)
-                }
+                Text("\(Constant.buttonActionTtite)")
+                    .frame(height: 50)
+                    .frame(maxWidth: .infinity)
+                    .background(Color(red: 124 / 255, green: 222 / 255, blue: 220 / 255))
+                    .cornerRadius(10)
             })
             .disabled(!playerViewModel.isAvailableSplitting)
         }
@@ -188,6 +187,7 @@ private extension SplitTeamView {
 
 struct SplitTeamView_Previews: PreviewProvider {
     static var previews: some View {
-        SplitTeamView(PersistenceController.preview.container.viewContext)
+        SplitTeamView(playerViewModel: PlayerViewModel(context: PersistenceController.preview.container.viewContext),
+                      playFlow: { _ in })
     }
 }

@@ -44,8 +44,18 @@ final class TeamStorage: NSObject, ObservableObject {
     }
     
     private func mapToTeamModels(from teamEntities: [TeamEntity]) -> [TeamModel] {
-        teamEntities.map { teamEntity in
-            TeamModel(id: UUID(), name: teamEntity.name ?? "", icon: UIImage(named: "Barcelona")!, players: teamEntity.playerModels)
+        teamEntities.compactMap { teamEntity -> TeamModel? in
+            let players = teamEntity.playerModels
+            guard let id = teamEntity.id,
+                  let name = teamEntity.name  else {
+                return nil
+            }
+            
+            if let iconData = teamEntity.icon {
+                return TeamModel(id: id, name: name, icon:  UIImage(data: iconData) ?? UIImage(named: "Barcelona")!, players: players)
+            }
+            
+            return TeamModel(id: id, name: name, icon: UIImage(named: "Barcelona")!, players: players)
         }
     }
     

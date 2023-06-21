@@ -9,16 +9,16 @@ import SwiftUI
 
 struct StatisticsView: View {
     var body: some View {
-        ZStack {
-            LinearGradient(
-                gradient: Gradient(colors: [Color(hex: "004ff9"), Color(hex: "fff94c")]),
-                startPoint: .leading,
-                endPoint: .trailing
-            )
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            ZStack {
+                LinearGradient(
+                    gradient: Gradient(colors: [Color(hex: "004ff9"), Color(hex: "fff94c")]),
+                    startPoint: .leading,
+                    endPoint: .trailing
+                )
+                Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            }
+            .ignoresSafeArea()
         }
-        .ignoresSafeArea()
-    }
 }
 
 struct StatisticsView_Previews: PreviewProvider {

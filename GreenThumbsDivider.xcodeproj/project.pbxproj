@@ -42,6 +42,11 @@
 		E878EA6D2A08DF01000A14D2 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E878EA6C2A08DF01000A14D2 /* Launch Screen.storyboard */; };
 		E878EA8F2A0952BF000A14D2 /* ImagePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E878EA8E2A0952BF000A14D2 /* ImagePickerViewModel.swift */; };
 		E8A129C52A345AFD00F3D844 /* TeamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A129C42A345AFC00F3D844 /* TeamManager.swift */; };
+		E8BCD3A32A42F55E00C914C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BCD3A22A42F55E00C914C8 /* AppDelegate.swift */; };
+		E8BCD3A52A42F58800C914C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BCD3A42A42F58800C914C8 /* SceneDelegate.swift */; };
+		E8BCD3A92A4301BD00C914C8 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BCD3A82A4301BD00C914C8 /* AppCoordinator.swift */; };
+		E8BCD3AD2A433C1E00C914C8 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BCD3AC2A433C1E00C914C8 /* Coordinator.swift */; };
+		E8BCD3AF2A43474900C914C8 /* GameCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BCD3AE2A43474900C914C8 /* GameCoordinator.swift */; };
 		E8C21F2229E4257B00369E39 /* GreenThumbsDividerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C21F2129E4257B00369E39 /* GreenThumbsDividerApp.swift */; };
 		E8C21F2629E4257E00369E39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8C21F2529E4257E00369E39 /* Assets.xcassets */; };
 		E8C21F2929E4257E00369E39 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8C21F2829E4257E00369E39 /* Preview Assets.xcassets */; };
@@ -103,6 +108,12 @@
 		E878EA6C2A08DF01000A14D2 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		E878EA8E2A0952BF000A14D2 /* ImagePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerViewModel.swift; sourceTree = "<group>"; };
 		E8A129C42A345AFC00F3D844 /* TeamManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamManager.swift; sourceTree = "<group>"; };
+		E8BCD3A22A42F55E00C914C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E8BCD3A42A42F58800C914C8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		E8BCD3A62A42F7D900C914C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		E8BCD3A82A4301BD00C914C8 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		E8BCD3AC2A433C1E00C914C8 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		E8BCD3AE2A43474900C914C8 /* GameCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCoordinator.swift; sourceTree = "<group>"; };
 		E8BDF38A2A3E6AE0002F934B /* GreenThumbsDivider 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "GreenThumbsDivider 2.xcdatamodel"; sourceTree = "<group>"; };
 		E8C21F1E29E4257B00369E39 /* GreenThumbsDivider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GreenThumbsDivider.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8C21F2129E4257B00369E39 /* GreenThumbsDividerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenThumbsDividerApp.swift; sourceTree = "<group>"; };
@@ -237,6 +248,16 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		E8BCD3A72A4301A700C914C8 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				E8BCD3A82A4301BD00C914C8 /* AppCoordinator.swift */,
+				E8BCD3AC2A433C1E00C914C8 /* Coordinator.swift */,
+				E8BCD3AE2A43474900C914C8 /* GameCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
 		E8C21F1529E4257B00369E39 = {
 			isa = PBXGroup;
 			children = (
@@ -256,6 +277,10 @@
 		E8C21F2029E4257B00369E39 /* GreenThumbsDivider */ = {
 			isa = PBXGroup;
 			children = (
+				E8BCD3A42A42F58800C914C8 /* SceneDelegate.swift */,
+				E8BCD3A22A42F55E00C914C8 /* AppDelegate.swift */,
+				E8BCD3A72A4301A700C914C8 /* Coordinators */,
+				E8BCD3A62A42F7D900C914C8 /* Info.plist */,
 				E8E212D42A337DCC005F8067 /* Core Data Models */,
 				E8DC48432A02A1F800F7D9B5 /* Common */,
 				E84D05DE29FA929500DAA721 /* View */,
@@ -425,6 +450,7 @@
 				E8C21F3729E446AC00369E39 /* SplitTeamView.swift in Sources */,
 				E8C21F3529E4386800369E39 /* GridStack.swift in Sources */,
 				E81CCD8C2A37161B00B6EF53 /* Team+CoreDataClass.swift in Sources */,
+				E8BCD3A92A4301BD00C914C8 /* AppCoordinator.swift in Sources */,
 				E878EA672A060163000A14D2 /* TapeShape.swift in Sources */,
 				E81CCD8D2A37161B00B6EF53 /* Team+CoreDataProperties.swift in Sources */,
 				E878EA692A06130D000A14D2 /* Color+Hex.swift in Sources */,
@@ -447,10 +473,14 @@
 				E81CCD872A37161B00B6EF53 /* SkillsModel+CoreDataProperties.swift in Sources */,
 				E8DC484F2A03F26700F7D9B5 /* FifaCardViewModel.swift in Sources */,
 				E827DF8E2A14E38E00AA107B /* GameView.swift in Sources */,
+				E8BCD3AD2A433C1E00C914C8 /* Coordinator.swift in Sources */,
+				E8BCD3AF2A43474900C914C8 /* GameCoordinator.swift in Sources */,
 				E84D05DA29F965F100DAA721 /* SourcePicker.swift in Sources */,
 				E81CCD932A37493B00B6EF53 /* UIImage + Orientation.swift in Sources */,
+				E8BCD3A32A42F55E00C914C8 /* AppDelegate.swift in Sources */,
 				E81CCD892A37161B00B6EF53 /* Player+CoreDataProperties.swift in Sources */,
 				E8C21F3D29E54B9F00369E39 /* CarouselView.swift in Sources */,
+				E8BCD3A52A42F58800C914C8 /* SceneDelegate.swift in Sources */,
 				E8C21F3B29E54B8000369E39 /* PlayerViewModel.swift in Sources */,
 				E878EA6B2A08AE27000A14D2 /* LineDivider.swift in Sources */,
 				E8E212CB2A3315A9005F8067 /* TeamsViewBottomSheet.swift in Sources */,
@@ -603,8 +633,8 @@
 				DEVELOPMENT_TEAM = UPWXFVVHLN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GreenThumbsDivider/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "I wanna use your  camera to ake a picture";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
@@ -635,8 +665,8 @@
 				DEVELOPMENT_TEAM = UPWXFVVHLN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GreenThumbsDivider/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "I wanna use your  camera to ake a picture";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";

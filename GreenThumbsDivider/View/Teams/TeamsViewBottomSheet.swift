@@ -38,7 +38,6 @@ struct TeamsViewBottomSheet: View {
     @Binding var isPresented: Bool
     @StateObject var vm: TeamsViewBottomSheetViewModel
 
-
     init(isPresented: Binding<Bool>,
         vm: TeamsViewBottomSheetViewModel) {
         self._isPresented = isPresented
